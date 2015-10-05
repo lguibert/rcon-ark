@@ -1,0 +1,98 @@
+@bg_error: #FFCCCC;
+@color_error: #DA300E;
+@text_color: #424242;
+@text_color_hover: #1A237E;
+
+@max_size: 200px;
+
+.border-radius(@radius: 10px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.fullsized{
+  height: 100%;
+  width: 100%;
+}
+
+#wrap {
+  padding-left: 10px;
+  padding-right: 10px;
+  #main{
+    overflow: auto;
+  }
+}
+
+
+.message {
+  padding: 15px;
+  text-align: center;
+  position: fixed;
+  top: 35%;
+  left: 40%;
+  width: 300px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: none;
+  &.success{
+    background-color: #33AD5C;
+    color: white;
+  }
+  &.error{
+    background-color: @bg_error;
+    padding: 5px;
+    margin: 5px;
+    color: @color_error;
+    .border-radius;
+  }
+}
+
+.disabled{
+  background-color: lightgrey;
+  border-color: darkgray;
+  color:gray;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  div{
+    position: absolute;
+    top: 42%;
+    left: 42%;
+    padding: 50px 50px 30px 50px;
+    border: double black 5px;
+    background-color: white;
+    span{
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+}
+
+#contain-commands{
+  margin-bottom: 50px;
+}
+
+#result{
+  .border-radius;
+  border: solid black 1px;
+  width: 100%;
+  min-height: 250px;
+}
+
+footer {
+  position: relative;
+  clear: both;
+  height: 50px;
+  background-color: #333;
+  text-align: center;
+  color: white;
+  margin-top: 1px;
+}
