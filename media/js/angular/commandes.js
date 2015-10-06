@@ -15,7 +15,7 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
     return factory;
 }]);
 
-app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', 'LoadingState', '$location', function ($scope, $rootScope, superCache, CommandesFactory, LoadingState, $location) {
+app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', 'LoadingState', function ($scope, $rootScope, superCache, CommandesFactory, LoadingState) {
     $scope.default = [{
         "hour": 7,
         "minute": 30

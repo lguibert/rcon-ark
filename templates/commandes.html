@@ -15,9 +15,10 @@
                 <input name="minute" type="number" max="60" min="0" step="1" ng-model="default[0].minute"/>
             </div>
             <div class="col-xs-2 col-lg-2 col-md-2">
-                <div class="btn btn-default" ng-click="send_command('listplayers')">
-                    Faire un truc
+                <div class="btn btn-default" ng-click="send_command('Broadcast', broadcast_text)">
+                    Envoyer un message
                 </div>
+                <input name="broadcast_text" type="text"  ng-model="broadcast_text"/>
             </div>
             <div class="col-xs-2 col-lg-2 col-md-2">
                 <div class="btn btn-default" ng-click="send_command('listplayers')">
@@ -26,7 +27,7 @@
             </div>
             <div class="col-xs-2 col-lg-2 col-md-2">
                 <div class="btn btn-default" ng-click="send_command('listplayers')">
-                    Faire un truc
+                    Antho noob
                 </div>
             </div>
         </div>
