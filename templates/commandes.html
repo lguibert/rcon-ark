@@ -1,33 +1,39 @@
 <div class="container" ng-controller="CommandesController">
-    <div class="col-xs-12 col-lg-12 col-md-12" id="contain-commands">
+    <div id="contain-commands">
         <h1>Liste des commandes</h1>
+
         <div id="commands">
-            <div class="col-xs-3 col-lg-3 col-md-3">
-                <div class="btn btn-default" ng-click="send_command('ListPlayers')">
-                    Lister les joueurs en ligne
+            <div class="col-xs-12 col-lg-12 col-md-12 easy_commands">
+                <div class="col-xs-3 col-lg-3 col-md-3">
+                    <div class="btn btn-success" ng-click="send_command('ListPlayers')">
+                        Lister les joueurs en ligne
+                    </div>
+                </div>
+                <div class="col-xs-3 col-lg-3 col-md-3">
+                    <div class="btn btn-success"
+                         ng-click="send_command('SetTimeOfDay', default[0].hour + ':' + default[0].minute)">
+                        Changer l'heure du server
+                    </div>
+                    <input name="hour" type="number" max="23" min="0" step="1" ng-model="default[0].hour"/>
+                    <input name="minute" type="number" max="60" min="0" step="1" ng-model="default[0].minute"/>
+                </div>
+                <div class="col-xs-2 col-lg-2 col-md-2">
+                    <div class="btn btn-success" ng-click="send_command('Broadcast', broadcast_text)">
+                        Envoyer un message
+                    </div>
+                    <input name="broadcast_text" type="text" ng-model="broadcast_text"/>
+                </div>
+                <div class="col-xs-2 col-lg-2 col-md-2">
+                    <div class="btn btn-success" ng-click="send_command('listplayers')">
+                        Faire un truc
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-3 col-lg-3 col-md-3">
-                <div class="btn btn-default" ng-click="send_command('SetTimeOfDay', default[0].hour + ':' + default[0].minute)">
-                    Changer l'heure du server
-                </div>
-                <input name="hour" type="number" max="23" min="0" step="1" ng-model="default[0].hour"/>
-                <input name="minute" type="number" max="60" min="0" step="1" ng-model="default[0].minute"/>
-            </div>
-            <div class="col-xs-2 col-lg-2 col-md-2">
-                <div class="btn btn-default" ng-click="send_command('Broadcast', broadcast_text)">
-                    Envoyer un message
-                </div>
-                <input name="broadcast_text" type="text"  ng-model="broadcast_text"/>
-            </div>
-            <div class="col-xs-2 col-lg-2 col-md-2">
-                <div class="btn btn-default" ng-click="send_command('listplayers')">
-                    Faire un truc
-                </div>
-            </div>
-            <div class="col-xs-2 col-lg-2 col-md-2">
-                <div class="btn btn-default" ng-click="send_command('listplayers')">
-                    Antho noob
+            <div class="col-xs-12 col-lg-12 col-md-12 hard_commands">
+                <div class="col-xs-2 col-lg-2 col-md-2">
+                    <div class="btn btn-danger" ng-click="send_command('destroywilddinos')">
+                        Tuer tous les dinos
+                    </div>
                 </div>
             </div>
         </div>

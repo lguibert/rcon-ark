@@ -1,4 +1,5 @@
 @bg_error: #FFCCCC;
+@bg_success: #54c67f;
 @color_error: #DA300E;
 @text_color: #424242;
 @text_color_hover: #1A237E;
@@ -36,7 +37,7 @@
   border-bottom-left-radius: 5px;
   display: none;
   &.success{
-    background-color: #33AD5C;
+    background-color: @bg_success;
     color: white;
   }
   &.error{
@@ -78,6 +79,20 @@
 
 #contain-commands{
   margin-bottom: 50px;
+  .easy_commands{
+    .border-radius;
+    padding: 10px;
+    margin:10px 0 10px 0;
+    background-color: @bg_success;
+    border: solid 1px @bg_success;
+  }
+  .hard_commands{
+    .border-radius;
+    background-color: @bg_error;
+    border: solid 1px @bg_error;
+    padding: 10px;
+    margin:10px 0 10px 0;
+  }
 }
 
 #result{
