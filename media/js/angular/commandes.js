@@ -1,18 +1,22 @@
 app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
-    var factory = {
+    return {
         sendCommand: function (cmd, attrs) {
             var deferred = $q.defer();
-            $http.get(server + 'command/' + cmd + (attrs ? '/' + attrs : ''), {cache: false})
+            $http({
+                method: 'POST',
+                url: server + 'command/',
+                data: [cmd, attrs],
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
                 .success(function (data) {
                     deferred.resolve(data);
                 })
-                .error(function (data) {
+                .error(function () {
                     deferred.reject(null);
                 });
             return deferred.promise;
-        },
-    }
-    return factory;
+        }
+    };
 }]);
 
 app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', 'LoadingState', function ($scope, $rootScope, superCache, CommandesFactory, LoadingState) {
@@ -43,5 +47,5 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
 
         LoadingState.setLoadingState(bool);
         $scope.loading = LoadingState.getLoadingState();
-    };
+    }
 }]);
