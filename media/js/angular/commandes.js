@@ -40,9 +40,9 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
 
     function loading(bool) {
         if (bool) {
-            angular.element('#result').addClass("disabled");
+            angular.element('#loading').addClass("disabled");
         } else {
-            angular.element('#result').removeClass("disabled");
+            angular.element('#loading').removeClass("disabled");
         }
 
         LoadingState.setLoadingState(bool);
