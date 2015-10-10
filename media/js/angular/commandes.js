@@ -19,7 +19,7 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
     };
 }]);
 
-app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', 'LoadingState', function ($scope, $rootScope, superCache, CommandesFactory, LoadingState) {
+app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', function ($scope, $rootScope, superCache, CommandesFactory) {
     $scope.default = [{
         "hour": 7,
         "minute": 30
@@ -27,25 +27,14 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
     ];
 
     $scope.send_command = function (cmd, attrs) {
-        loading(true);
+        $rootScope.load(true);
         CommandesFactory.sendCommand(cmd, attrs).then(function (data) {
             angular.element("#result").html(data);
-            loading(false);
+            $rootScope.load(false);
         }, function (msg) {
-            loading(false);
+            $rootScope.load(false);
             displayMessage(msg, "error");
         });
 
     };
-
-    function loading(bool) {
-        if (bool) {
-            angular.element('#loading').addClass("disabled");
-        } else {
-            angular.element('#loading').removeClass("disabled");
-        }
-
-        LoadingState.setLoadingState(bool);
-        $scope.loading = LoadingState.getLoadingState();
-    }
 }]);

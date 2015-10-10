@@ -9,7 +9,8 @@
     <script src="media/js/header.js"></script>
 
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!--<script src="bower_components/angular-route/angular-route.min.js"></script>-->
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 
 
@@ -19,13 +20,14 @@
     <link rel="stylesheet/less" type="text/css" href="media/css/style.less">
     <script src="media/js/less.min.js"></script>
 </head>
-<body>
+<body ng-controller="MainController">
 <header>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="navbar_header">
-                    <a href="#/commandes/" class="navbar-brand">Toutes les commandes</a>
+                    <a ui-sref="home" class="navbar-brand">Accueil</a>
+                    <a ui-sref="commands" class="navbar-brand">Toutes les commandes</a>
                 </div>
             </div>
         </div>
@@ -34,10 +36,11 @@
 <section id="wrap">
     <div id="main">
         <div class="message"></div>
-        <div ng-view></div>
+        <div ui-view></div>
     </div>
 </section>
 <script src="media/js/angular/app.js"></script>
+<script src="media/js/angular/users.js"></script>
 <script src="media/js/angular/routes.js"></script>
 <script src="media/js/angular/commandes.js"></script>
 <script src="media/js/messages.js"></script>

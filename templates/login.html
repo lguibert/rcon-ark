@@ -1,0 +1,11 @@
+<div>
+    <form name="loginForm" ng-controller="LoginController" ng-submit="login(credentials)" novalidate>
+        <label for="username">Login:</label>
+        <input id="username" type="text" ng-model="credentials.username"/>
+        <label for="password">Password:</label>
+        <input id="password" type="password" ng-model="credentials.password"/>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
+<div id="debug">{{currentUser.data[2]}}</div>

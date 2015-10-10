@@ -1,4 +1,4 @@
-<div class="container" ng-controller="CommandesController">
+<div class="container" ng-controller="CommandesController" ng-if="isAuthorized(currentUser[2])">
     <div id="contain-commands">
         <h1>Liste des commandes</h1>
 
