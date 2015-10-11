@@ -12,7 +12,7 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
                     deferred.resolve(data);
                 })
                 .error(function () {
-                    deferred.reject(null);
+                    deferred.reject();
                 });
             return deferred.promise;
         }

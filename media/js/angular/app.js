@@ -24,6 +24,10 @@ app.controller('MainController', ['$scope', '$rootScope', 'LoadingState', 'AuthS
       $scope.currentUser = user;
     };
 
+    $scope.deleteCurrentUser = function (){
+        delete $scope.currentUser;
+    };
+
 
     $rootScope.$on('ChangedState', function () {
         $scope.loading = LoadingState.getLoadingState();

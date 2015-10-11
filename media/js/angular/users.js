@@ -23,7 +23,6 @@ app.factory('AuthService', function ($http, Session) {
         if (!angular.isArray(authorizedRoles)) {
             authorizedRoles = [authorizedRoles];
         }
-        console.log(authorizedRoles);
         return (authService.isAuthenticated() &&
         authorizedRoles.indexOf(Session.userRole) !== -1);
     };
@@ -31,7 +30,7 @@ app.factory('AuthService', function ($http, Session) {
     return authService;
 });
 
-app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService) {
+app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService, Session, $location) {
     $scope.credentials = {
         username: '',
         password: ''
@@ -40,10 +39,17 @@ app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, Aut
         AuthService.login(credentials).then(function (user) {
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
             $scope.setCurrentUser(user.data);
+            $location.path("/commands");
         }, function () {
             $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         });
     };
+
+    $scope.logout = function (){
+        Session.destroy();
+        $scope.deleteCurrentUser();
+        $location.path("/home");
+    }
 });
 
 

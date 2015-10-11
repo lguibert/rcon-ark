@@ -27,7 +27,11 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="navbar_header">
                     <a ui-sref="home" class="navbar-brand">Accueil</a>
-                    <a ui-sref="commands" class="navbar-brand">Toutes les commandes</a>
+                    <a ui-sref="commands" class="navbar-brand" ng-if="currentUser">Toutes les commandes</a>
+                </div>
+                <div class="navbar-right" ng-controller="LoginController">
+                    <a class="navbar-brand" ui-sref="login" ng-if="!currentUser">Connexion</a>
+                    <a class="navbar-brand" href="#" ng-click="logout()" ng-if="currentUser">Deconnexion</a>
                 </div>
             </div>
         </div>
@@ -35,9 +39,9 @@
 </header>
 <section id="wrap">
     <div id="main">
-        <div class="message"></div>
         <div ui-view></div>
     </div>
+    <div id="debug"></div>
 </section>
 <script src="media/js/angular/app.js"></script>
 <script src="media/js/angular/users.js"></script>
