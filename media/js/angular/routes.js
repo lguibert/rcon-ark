@@ -1,5 +1,5 @@
 app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function ($stateProvider, $urlRouterProvider, USER_ROLES) {
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/login");
     $stateProvider
         .state('login', {
             url: '/login',
@@ -10,10 +10,6 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function ($sta
             data: {
                 authorizedRoles: USER_ROLES.admin
             }
-        })
-        .state('home', {
-            url: '/',
-            templateUrl: 'templates/home.html',
         });
 }]);
 

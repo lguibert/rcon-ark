@@ -24,7 +24,7 @@ app.factory('AuthService', function ($http, Session) {
             authorizedRoles = [authorizedRoles];
         }
         return (authService.isAuthenticated() &&
-        authorizedRoles.indexOf(Session.userRole) !== -1);
+        authorizedRoles.indexOf(Session.userRole) !== -1);         
     };
 
     return authService;
