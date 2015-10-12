@@ -29,7 +29,7 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
     $scope.send_command = function (cmd, attrs) {
         $rootScope.load(true);
         CommandesFactory.sendCommand(cmd, attrs).then(function (data) {
-            angular.element("#result").html(data);
+            angular.element("#result").append("<br/>").append(data);
             $rootScope.load(false);
         }, function (msg) {
             $rootScope.load(false);
