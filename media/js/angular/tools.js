@@ -22,19 +22,18 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
     var cache = superCache.get('backgrounds');
 
 
-    if (cache) {
-        setBackground(cache);
-    } else {
-        $scope.get_backgrounds = function () {
+    $scope.get_backgrounds = function () {
+        if (cache) {
+            setBackground(cache);
+        } else {
             ToolsFactory.getBackgrounds().then(function (data) {
                 setBackground(data);
                 superCache.put('backgrounds', data);
             }, function () {
                 console.log("No background from server");
             });
-
-        };
-    }
+        }
+    };
 
     function setBackground(data) {
         var index = Math.floor((Math.random() * data.length));
