@@ -2,11 +2,7 @@ app.factory('ToolsFactory', ['$http', '$q', function ($http, $q) {
     return {
         getBackgrounds: function () {
             var deferred = $q.defer();
-            $http({
-                method: 'GET',
-                url: server + 'backgrounds/',
-                cache: true
-            })
+            $http.get(server + 'backgrounds/', {cache: true})
                 .success(function (data) {
                     deferred.resolve(data);
                 })
@@ -19,16 +15,17 @@ app.factory('ToolsFactory', ['$http', '$q', function ($http, $q) {
 }]);
 
 app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsFactory', function ($scope, $rootScope, superCache, ToolsFactory) {
-    var cache = superCache.get('backgrounds');
-
+    var backgrounds_cache = superCache.get('backgrounds_cache');
+    $scope.last_background = null;
 
     $scope.get_backgrounds = function () {
-        if (cache) {
+        if (backgrounds_cache) {
+            console.log("cache back");
             setBackground(cache);
         } else {
             ToolsFactory.getBackgrounds().then(function (data) {
                 setBackground(data);
-                superCache.put('backgrounds', data);
+                superCache.put('backgrounds_cache', data);
             }, function () {
                 console.log("No background from server");
             });
@@ -36,7 +33,20 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
     };
 
     function setBackground(data) {
-        var index = Math.floor((Math.random() * data.length));
+        var index = generateIndex(data);
+
+        if($scope.last_background == null){
+            $scope.last_background = index;
+        }
+        else if($scope.last_background == index){
+            setBackground(data);
+        }
+
         $("html").css("background-image", "url('media/img/backgrounds/" + data[index] + "')");
+        $scope.last_background = index;
+    }
+
+    function generateIndex(data){
+       return Math.floor((Math.random() * data.length));
     }
 }]);

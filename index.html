@@ -25,8 +25,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div id="navbar" class="navbar-collapse collapse">
+                <div class="navbar-left" ng-controller="ToolsController">
+                    <a class="navbar-brand" href="#" ng-click="get_backgrounds()">Changer le fond d'écran</a>
+                </div>
                 <div class="navbar-right" ng-controller="LoginController">
-                    <a class="navbar-brand" href="#" ng-click="logout()" ng-if="currentUser">Deconnexion</a>
+                    <a class="navbar-brand" href="#" ng-click="logout()" ng-if="currentUser">Déconnexion</a>
                 </div>
             </div>
         </div>
