@@ -1,4 +1,4 @@
-<div class="container" id="commands-root" ng-controller="CommandesController" ng-if="isAuthorized(currentUser[2])">
+<div class="container" id="commands-root" ng-controller="CommandesController" ng-init="check_user()">
     <div id="contain-commands">
         <h1>Liste des commandes</h1>
 
@@ -12,7 +12,7 @@
                 <div class="col-xs-6 col-lg-3 col-md-3 inputs-parent">
                     <div class="btn btn-success"
                          ng-click="send_command('SetTimeOfDay', default[0].hour + ':' + default[0].minute)">
-                        Changer l'heure du server
+                        Changer l'heure du serveur
                     </div>
                     <div class="inputs">
                         <label for="hour">H:</label>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-xs-6 col-lg-3 col-md-3">
                     <div class="btn btn-success" ng-click="send_command('saveworld')">
-                        Faire une sauvegarde du server
+                        Faire une sauvegarde du serveur
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-lg-12 col-md-12" id="result" ng-controller="MainController">
-        Pas encore de données !
+        <div id="result-results">Pas encore de données !</div>
             <div class="loading" ng-show="loading">
                 <div id="loading">
                     <img src="media/img/loader.gif"/>
@@ -55,5 +55,8 @@
                 </div>
             </div>
         <div id="result-error"><div id="result-error-content"></div></div>
+    </div>
+    <div class="col-xs-12 col-lg-12 col-md-12" id="result-controllers">
+        <button class="btn btn-warning" ng-click="clear_result()">Supprimer les résultats</button>
     </div>
 </div>
