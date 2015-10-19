@@ -22,7 +22,6 @@ app.factory('ScriptsFactory', ['$http', '$q', function ($http, $q) {
 
 app.controller('ScriptsController', ['$scope', '$rootScope', 'superCache', 'ScriptsFactory', function ($scope, $rootScope, superCache, ScriptsFactory) {
     $scope.send_script = function (script, attrs) {
-        console.log(attrs);
         $rootScope.load(true);
         ScriptsFactory.sendScript(script, attrs).then(function (data) {
             angular.element("#result-results").append("<br/>").append(data);
