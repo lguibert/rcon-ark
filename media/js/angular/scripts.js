@@ -19,6 +19,7 @@ app.factory('ScriptsFactory', ['$http', '$q', function ($http, $q) {
     };
 }]);
 
+
 app.controller('ScriptsController', ['$scope', '$rootScope', 'superCache', 'ScriptsFactory', '$location', function ($scope, $rootScope, superCache, ScriptsFactory, $location) {
     $scope.send_script = function (script, attrs) {
         $rootScope.load(true);
