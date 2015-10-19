@@ -1,10 +1,12 @@
 @bg_error: #FFCCCC;
 @bg_success: #B9F6CA;
+@bg_warning: #F4FF81;
+
 @color_error: #DA300E;
 @text_color: #424242;
 @text_color_hover: #1A237E;
-@size_result: 250px;
 
+@size_result: 250px;
 @max_size: 200px;
 
 html{
@@ -151,21 +153,26 @@ body{
   }
 }*/
 
+.commands(@color){
+  padding: 10px;
+  margin:10px 0 10px 0;
+  background-color: @color;
+  border: solid 1px @color;
+}
+
 #contain-commands{
   margin-bottom: 50px;
   .easy_commands{
     .border-radius;
-    padding: 10px;
-    margin:10px 0 10px 0;
-    background-color: @bg_success;
-    border: solid 1px @bg_success;
+    .commands(@bg_success)
   }
   .hard_commands{
     .border-radius;
-    background-color: @bg_error;
-    border: solid 1px @bg_error;
-    padding: 10px;
-    margin:10px 0 10px 0;
+    .commands(@bg_error)
+  }
+  .script_commands{
+    .border-radius;
+    .commands(@bg_warning);
   }
 }
 

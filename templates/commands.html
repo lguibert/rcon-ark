@@ -39,8 +39,31 @@
             </div>
             <div class="col-xs-12 col-lg-12 col-md-12 hard_commands">
                 <div class="col-xs-5 col-lg-2 col-md-3">
-                    <div class="btn btn-danger" ng-confirm-click="T'es sur de toi?" ng-click="send_command('destroywilddinos')">
+                    <div class="btn btn-danger" ng-confirm-click="T'es sur de toi?"
+                         ng-click="send_command('destroywilddinos')">
                         Tuer tous les dinos
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-12 col-md-12 script_commands" ng-controller="ScriptsController">
+                <div class="col-xs-5 col-lg-2 col-md-3">
+                    <div class="btn btn-warning" ng-confirm-click="T'es sur de toi?" ng-click="send_script('stop')">
+                        Stoper le serveur
+                    </div>
+                </div>
+                <div class="col-xs-5 col-lg-2 col-md-3">
+                    <div class="btn btn-warning" ng-confirm-click="T'es sur de toi?" ng-click="send_script('start')">
+                        Démarrer le serveur
+                    </div>
+                </div>
+                <div class="col-xs-6 col-lg-3 col-md-4">
+                    <div class="btn btn-warning" ng-click="send_script('status')">
+                        Connaitre l'état du serveur le serveur
+                    </div>
+                </div>
+                <div class="col-xs-5 col-lg-2 col-md-3">
+                    <div class="btn btn-warning" ng-confirm-click="T'es sur de toi?" ng-click="send_script('kill')">
+                        Kill le serveur
                     </div>
                 </div>
             </div>
@@ -48,13 +71,15 @@
     </div>
     <div class="col-xs-12 col-lg-12 col-md-12" id="result" ng-controller="MainController">
         <div id="result-results">Pas encore de données !</div>
-            <div class="loading" ng-show="loading">
-                <div id="loading">
-                    <img src="media/img/loader.gif"/>
-                    <span>Chargement...</span>
-                </div>
+        <div class="loading" ng-show="loading">
+            <div id="loading">
+                <img src="media/img/loader.gif"/>
+                <span>Chargement...</span>
             </div>
-        <div id="result-error"><div id="result-error-content"></div></div>
+        </div>
+        <div id="result-error">
+            <div id="result-error-content"></div>
+        </div>
     </div>
     <div class="col-xs-12 col-lg-12 col-md-12" id="result-controllers">
         <button class="btn btn-warning" ng-click="clear_result()">Supprimer les résultats</button>

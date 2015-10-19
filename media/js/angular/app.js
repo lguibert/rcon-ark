@@ -1,4 +1,4 @@
-var app = angular.module('rcon-ark', ['ngAnimate' ,'ui.router']);
+var app = angular.module('rcon-ark', ['ngAnimate' ,'ui.router', 'ngCookies']);
 var server = "http://dev.lucasguibert.com:8003/";
 
 
