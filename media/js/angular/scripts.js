@@ -1,11 +1,11 @@
 app.factory('ScriptsFactory', ['$http', '$q', function ($http, $q) {
     return {
-        sendScript: function (cmd, attrs) {
+        sendScript: function (script) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
                 url: server + 'script/',
-                data: [cmd, attrs],
+                data: script,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .success(function (data) {
@@ -21,9 +21,9 @@ app.factory('ScriptsFactory', ['$http', '$q', function ($http, $q) {
 
 
 app.controller('ScriptsController', ['$scope', '$rootScope', 'superCache', 'ScriptsFactory', '$location', function ($scope, $rootScope, superCache, ScriptsFactory, $location) {
-    $scope.send_script = function (script, attrs) {
+    $scope.send_script = function (script) {
         $rootScope.load(true);
-        ScriptsFactory.sendScript(script, attrs).then(function (data) {
+        ScriptsFactory.sendScript(script).then(function (data) {
             angular.element("#result-results").append("<br/>").append(data);
             $rootScope.load(false);
         }, function (msg) {
