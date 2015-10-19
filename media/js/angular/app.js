@@ -1,5 +1,5 @@
-var app = angular.module('rcon-ark', ['ngAnimate' ,'ui.router', 'ngCookies']);
-var server = "http://dev.lucasguibert.com:8003/";
+var app = angular.module('rcon-ark', ['ngAnimate' ,'ui.router']);
+var server = "http://tools.nexusrcon.net/ark-api/";
 
 
 app.service('LoadingState', ['$rootScope', function ($rootScope) {
