@@ -18,7 +18,7 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
     var backgrounds_cache = superCache.get('backgrounds_cache');
     $scope.last_background = null;
 
-    $scope.get_backgrounds = function () {
+    $scope.get_backgrounds_ramdom = function () {
         if (backgrounds_cache) {
             console.log("cache back");
             setBackground(cache);
@@ -30,6 +30,10 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
                 console.log("No background from server");
             });
         }
+    };
+
+    $scope.get_backgrounds = function () {
+
     };
 
     function setBackground(data) {

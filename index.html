@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="rcon-ark" ng-controller="ToolsController" ng-init="get_backgrounds()">
+<html ng-app="rcon-ark" ng-controller="ToolsController" ng-init="get_backgrounds_ramdom()">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title></title>
@@ -27,6 +27,7 @@
         <div class="container">
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="navbar-left" ng-controller="ToolsController">
+                    <a class="navbar-brand" href="#" ng-click="get_backgrounds_ramdom()">Changer le fond d'écran (aléatoire)</a>
                     <a class="navbar-brand" href="#" ng-click="get_backgrounds()">Changer le fond d'écran</a>
                 </div>
                 <div class="navbar-right" ng-controller="LoginController">

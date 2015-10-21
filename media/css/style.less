@@ -9,6 +9,8 @@
 @size_result: 250px;
 @max_size: 200px;
 
+@back_transparent: rgba(255,255,255,0.5);
+
 html{
   background: no-repeat left top;
   background-size: 100%;
@@ -38,7 +40,7 @@ body{
 }
 
 #commands-root{
-  background-color: rgba(255,255,255,0.5);
+  background-color: @back_transparent;
   padding-bottom: 20px;
 }
 
@@ -68,7 +70,7 @@ body{
   left:35%;
   overflow: hidden;
   width: 480px;
-  background-color: rgba(255,255,255,0.5);
+  background-color: @back_transparent;
   padding-bottom: 20px;
   form{
     .fullsized;
@@ -183,7 +185,7 @@ body{
   max-height: 450px;
   overflow-y: scroll;
   min-height: @size_result;
-  background-color: rgba(255,255,255,0.5);
+  background-color: @back_transparent;
 }
 
 #result-controllers{
@@ -206,6 +208,24 @@ footer {
     display:inline-block;
     text-align: center;
   }
+}
 
+#back-container{
+  height:90%;
+  width: 300px;
+  position: absolute;
+  right:35px;
+  top:60px;
+  background-color: @back_transparent;
+  overflow-y: scroll;
+  margin: auto;
+  .backs{
+    float:left;
+    margin: 5px auto 5px auto;
+    .border-radius();
+    width: 250px;
+    height: 150px;
+    background-color: red;
+  }
 }
 
