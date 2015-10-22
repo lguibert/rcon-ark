@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-lg-12 col-md-12" id="result" ng-controller="MainController">
-        <div id="result-results">Pas encore de données !</div>
+        <div id="result-results"></div>
         <div class="loading" ng-show="loading">
             <div id="loading">
                 <img src="media/img/loader.gif"/>
@@ -85,7 +85,7 @@
         <button class="btn btn-warning" ng-click="clear_result()">Supprimer les résultats</button>
     </div>
 </div>
-<div id="back-container">
+<div id="back-container" ng-if="">
     <div class="backs"></div>
     <div class="backs"></div>
     <div class="backs"></div>

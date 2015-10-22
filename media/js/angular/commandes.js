@@ -26,8 +26,8 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
     }
     ];
 
-    $scope.check_user = function(){
-        if(!$scope.currentUser){
+    $scope.check_user = function () {
+        if (!$scope.currentUser) {
             $location.path("/login");
         }
     };
@@ -36,15 +36,34 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
     $scope.send_command = function (cmd, attrs) {
         $rootScope.load(true);
         CommandesFactory.sendCommand(cmd, attrs).then(function (data) {
-            angular.element("#result-results").append("<br/>").append(data);
             $rootScope.load(false);
+            try {
+                functions[data[0].toLowerCase()](data[1]);
+            }
+            catch (e) {
+                print_result(data);
+            }
         }, function (msg) {
             $rootScope.load(false);
             displayMessage(msg, "error");
         });
     };
 
-    $scope.clear_result = function(){
+    var functions = []; //listplayers, (settimeofday, broadcast, saveworld, destroywilddinos)?
+
+    functions["listplayers"] = function (data) {
+        for (var i = 0; i < data.length; i++) {
+            print_result(data[i].uid + " - " + data[i].playername + " " + data[i].steamid)
+        }
+    };
+
+    function print_result(data) {
+        var d = new Date();
+        angular.element("#result-results").append("<div class='result-results'><i>[" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]</i> " + data + "</div>");
+    };
+
+
+    $scope.clear_result = function () {
         angular.element("#result-results").html("");
     }
 }]);
