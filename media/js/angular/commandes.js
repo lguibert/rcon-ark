@@ -26,6 +26,9 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
     }
     ];
 
+    var success_class = "success";
+    var error_class = "error";
+
     $scope.check_user = function () {
         if (!$scope.currentUser) {
             $location.path("/login");
@@ -38,29 +41,44 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         CommandesFactory.sendCommand(cmd, attrs).then(function (data) {
             $rootScope.load(false);
             try {
+                console.log(data);
                 functions[data[0].toLowerCase()](data[1]);
             }
             catch (e) {
-                print_result(data);
+                print_result(data, success_class);
             }
         }, function (msg) {
             $rootScope.load(false);
-            displayMessage(msg, "error");
+            print_result(msg, error_class);
         });
     };
 
     var functions = []; //listplayers, (settimeofday, broadcast, saveworld, destroywilddinos)?
 
     functions["listplayers"] = function (data) {
-        for (var i = 0; i < data.length; i++) {
-            print_result(data[i].uid + " - " + data[i].playername + " " + data[i].steamid)
+        if(data[0].playername){
+            for (var i = 0; i < data.length; i++) {
+                print_result(data[i].uid + " - " + data[i].playername + " " + data[i].steamid, success_class);
+            }
+        }else{
+            print_result(data, success_class);
         }
+
     };
 
-    function print_result(data) {
+    function print_result(data, type) {
+        console.log("print op");
         var d = new Date();
-        angular.element("#result-results").append("<div class='result-results'><i>[" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]</i> " + data + "</div>");
-    };
+        angular.element("#result-results").append("<div class='result-results "+ type +"'><i>[" + addZero(d.getHours()) + ":"
+            + addZero(d.getMinutes()) + ":" + addZero(d.getSeconds()) + "]</i> " + data + "</div>");
+    }
+
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
 
 
     $scope.clear_result = function () {

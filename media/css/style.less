@@ -3,6 +3,7 @@
 @bg_warning: #F4FF81;
 
 @color_error: #DA300E;
+@color_success: #3c763d;
 @text_color: #424242;
 @text_color_hover: #1A237E;
 
@@ -51,6 +52,27 @@ body{
   .border-radius;
 }
 
+.success{
+  background-color: @bg_success;
+  padding: 5px;
+  color: @color_success;
+  .border-radius;
+}
+
+#result{
+  .border-radius;
+  border: solid black 1px;
+  width: 100%;
+  max-height: 450px;
+  overflow-y: scroll;
+  min-height: @size_result;
+  background-color: @back_transparent;
+}
+
+#result-controllers{
+  margin-top: 10px;
+}
+
 #result-error{
   text-align: center;
   .fullsized;
@@ -68,7 +90,7 @@ body{
 #result-results{
   .result-results{
     margin: 5px 0 5px 0;
-    background-color: rgba(125,158,10,0.45);
+    //background-color: rgba(125,158,10,0.45);
   }
   i{
     background-color: rgba(45,198,190,0.45);
@@ -143,28 +165,6 @@ body{
   }
 }
 
-/*.loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 9999;
-  div{
-    position: absolute;
-    top: 42%;
-    left: 42%;
-    padding: 50px 50px 30px 50px;
-    border: double black 5px;
-    background-color: white;
-    span{
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-    }
-  }
-}*/
-
 .commands(@color){
   padding: 10px;
   margin:10px 0 10px 0;
@@ -186,20 +186,6 @@ body{
     .border-radius;
     .commands(@bg_warning);
   }
-}
-
-#result{
-  .border-radius;
-  border: solid black 1px;
-  width: 100%;
-  max-height: 450px;
-  overflow-y: scroll;
-  min-height: @size_result;
-  background-color: @back_transparent;
-}
-
-#result-controllers{
-  margin-top: 10px;
 }
 
 footer {
