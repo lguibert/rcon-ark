@@ -11,8 +11,8 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
                 .success(function (data) {
                     deferred.resolve(data);
                 })
-                .error(function () {
-                    deferred.reject();
+                .error(function (msg, error_code, fc) {
+                    deferred.reject(msg);
                 });
             return deferred.promise;
         }
@@ -41,7 +41,6 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         CommandesFactory.sendCommand(cmd, attrs).then(function (data) {
             $rootScope.load(false);
             try {
-                console.log(data);
                 functions[data[0].toLowerCase()](data[1]);
             }
             catch (e) {
@@ -67,7 +66,6 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
     };
 
     function print_result(data, type) {
-        console.log("print op");
         var d = new Date();
         angular.element("#result-results").append("<div class='result-results "+ type +"'><i>[" + addZero(d.getHours()) + ":"
             + addZero(d.getMinutes()) + ":" + addZero(d.getSeconds()) + "]</i> " + data + "</div>");
