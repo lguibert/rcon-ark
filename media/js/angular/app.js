@@ -1,6 +1,6 @@
 var app = angular.module('rcon-ark', ['ngAnimate' ,'ui.router']);
-//var server = "http://tools.nexusrcon.net/ark-api/";
-var server = "http://dev.lucasguibert.com:8003/";
+var server = "http://tools.nexusrcon.net/ark-api/";
+//var server = "http://dev.lucasguibert.com:8003/";
 
 
 app.service('LoadingState', ['$rootScope', function ($rootScope) {
