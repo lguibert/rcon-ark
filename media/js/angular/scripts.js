@@ -11,8 +11,8 @@ app.factory('ScriptsFactory', ['$http', '$q', function ($http, $q) {
                 .success(function (data) {
                     deferred.resolve(data);
                 })
-                .error(function () {
-                    deferred.reject();
+                .error(function (msg) {
+                    deferred.reject(msg);
                 });
             return deferred.promise;
         }
@@ -24,11 +24,11 @@ app.controller('ScriptsController', ['$scope', '$rootScope', 'superCache', 'Scri
     $scope.send_script = function (script, attrs) {
         $rootScope.load(true);
         ScriptsFactory.sendScript(script, attrs).then(function (data) {
-            angular.element("#result-results").append("<br/>").append(data);
+            $rootScope.print_result(data, "success");
             $rootScope.load(false);
         }, function (msg) {
             $rootScope.load(false);
-            displayMessage(msg, "error");
+            $rootScope.print_result(msg, "error");
         });
     };
 }]);

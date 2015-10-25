@@ -3,7 +3,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function ($sta
     $stateProvider
         .state('login', {
             url: '/login',
-            templateUrl: 'templates/login.html',
+            templateUrl: 'templates/login.html'
         }).state('commands', {
             url: '/commands',
             templateUrl: 'templates/commands.html',
@@ -12,15 +12,3 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', function ($sta
             }
         });
 }]);
-
-/*
- angular.module('myapp', ['ngCookies']).
- config([
- '$httpProvider',
- '$interpolateProvider',
- function ($httpProvider, $interpolateProvider) {
- $interpolateProvider.startSymbol('{$');
- $interpolateProvider.endSymbol('$}');
- $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
- }])
- */
