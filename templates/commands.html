@@ -1,4 +1,26 @@
 <div class="container" id="commands-root" ng-controller="CommandesController" ng-init="check_user()">
+    <div id="items-container" ng-controller="ItemsController">
+        <div id="items-controller">
+            <div class="refresh" ng-click="create_list_items()" title="Recharger la liste des items">
+                <img src="media/img/refresh.png">
+            </div>
+            <div class="search">
+                <input type="text" ng-model="searched_item" ng-change="search_item(searched_item)"/>
+            </div>
+        </div>
+        <div id="items" class="items">
+            <table id="table-items">
+                <tr ng-repeat="item in items track by $index" ng-class="{darker: $index % 2 == 0, lighter: $index % 2 != 0, active: is_selected(item)}"
+                    ng-click="set_selected(item)">
+                    <td ng-if="$index==0">{{item.icone}}</td>
+                    <td ng-if="$index!=0"><img src="{{item.icone}}"/></td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     <div id="contain-commands">
         <h1>Liste des commandes</h1>
 
@@ -40,7 +62,7 @@
                 </div>
                 <div class="col-xs-12 col-lg-12 col-md-12">
                     <div class="col-xs-6 col-lg-3 col-md-3">
-                        <div class="btn btn-success" ng-click="send_command('giveitemnumtoplayer ')">
+                        <div class="btn btn-success" ng-click="send_command('giveitemnumtoplayer')">
                             Donner un item à un joueur
                         </div>
                     </div>
@@ -103,8 +125,9 @@
                 <img src="media/img/refresh.png">
             </div>
         </div>
-        <div ng-repeat="player in online_players" class="players" ng-class="{active: is_selected(player)}"
+        <div ng-show="online_players.length > 0" ng-repeat="player in online_players track by $index" class="players" ng-class="{active: is_selected(player)}"
              ng-click="set_selected(player)">
+
             <div class="players-data">
                 <div class="player-data">
                     <span>Nom: </span>

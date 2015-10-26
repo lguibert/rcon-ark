@@ -20,7 +20,6 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
 
     $scope.get_backgrounds_ramdom = function () {
         if (backgrounds_cache) {
-            console.log("cache back");
             setBackground(cache);
         } else {
             ToolsFactory.getBackgrounds().then(function (data) {
@@ -39,10 +38,10 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
     function setBackground(data) {
         var index = generateIndex(data);
 
-        if($scope.last_background == null){
+        if ($scope.last_background == null) {
             $scope.last_background = index;
         }
-        else if($scope.last_background == index){
+        else if ($scope.last_background == index) {
             setBackground(data);
         }
 
@@ -50,7 +49,27 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
         $scope.last_background = index;
     }
 
-    function generateIndex(data){
-       return Math.floor((Math.random() * data.length));
+    function generateIndex(data) {
+        return Math.floor((Math.random() * data.length));
     }
 }]);
+
+app.service('SelectedProperties', function () {
+    var player_selected = '';
+    var item_selected = "";
+
+    return {
+        getPlayerSelected: function () {
+            return player_selected;
+        },
+        setPlayerSelected: function (value) {
+            player_selected = value;
+        },
+        getItemSelected: function () {
+            return item_selected;
+        },
+        setItemSelected: function (value) {
+            item_selected = value;
+        }
+    };
+});

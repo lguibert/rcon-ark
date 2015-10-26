@@ -19,7 +19,8 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
     };
 }]);
 
-app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', '$location', function ($scope, $rootScope, superCache, CommandesFactory, $location) {
+app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', '$location', 'SelectedProperties',
+    function ($scope, $rootScope, superCache, CommandesFactory, $location, SelectedProperties) {
     var success_class = "success";
     var error_class = "error";
 
@@ -30,6 +31,7 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
     ];
 
     $scope.set_selected = function (player){
+        SelectedProperties.setPlayerSelected(player);
         $scope.player_selected = player;
     };
 
@@ -49,10 +51,18 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
 
     $scope.send_command = function (cmd, attrs) {
         $rootScope.load(true);
+        try{
+            functions[cmd.toLowerCase()]();
+        }
+        catch(e){
+        }
         CommandesFactory.sendCommand(cmd, attrs).then(function (data) {
             $rootScope.load(false);
-            $scope.online_players = data[1];
             try {
+                if(data[1][0].playername){
+                    $scope.online_players = data[1];
+                }
+
                 functions[data[0].toLowerCase()](data[1]);
             }
             catch (e) {
@@ -60,7 +70,7 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
             }
         }, function (msg) {
             $rootScope.load(false);
-            $rootScope. print_result(msg, error_class);
+            $rootScope.print_result(msg, error_class);
         });
     };
 
@@ -73,6 +83,11 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         }else{
             $rootScope.print_result(data, success_class);
         }
+    };
+
+    functions["giveitemnumtoplayer"] = function (){
+        console.log(SelectedProperties.getItemSelected());
+        console.log(SelectedProperties.getPlayerSelected());
     };
 
 

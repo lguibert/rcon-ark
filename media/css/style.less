@@ -189,11 +189,20 @@ footer {
   }
 }
 
+
+#items-container{
+  left:30px;
+  top:60px;
+}
+
 #players-container{
+  right:35px;
+}
+
+#players-container, #items-container{
   height:90%;
   width: 300px;
   position: absolute;
-  right:35px;
   top:60px;
   background-color: @back_transparent;
   overflow-y: auto;
@@ -218,9 +227,14 @@ footer {
   }
 }
 
-#players-controller{
+.active{
+  background-color: rgba(53, 220, 0, 0.8) !important;
+}
+
+#players-controller, #items-controller{
   background-color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
+  height: 32px;
   img{
     width: 32px;
     height: 32px;
@@ -229,6 +243,38 @@ footer {
   }
   &:active{
     background-color: rgba(0, 0, 0, 0.25);
+  }
+}
+
+#items-controller{
+  div{
+    display: inline-block;
+  }
+  .refresh{
+    width: 15%;
+  }
+  .search{
+    width: 75%;
+  }
+}
+
+#table-items{
+  tr{
+    color:white;
+    &.darker{
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    &.lighter{
+      background-color: rgba(0, 0, 0, 0.45);
+    }
+  }
+  td{
+    text-align: center;
+
+    img{
+      width: 42px;
+      height: 42px;
+    }
   }
 }
 
