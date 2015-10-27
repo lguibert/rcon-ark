@@ -90,6 +90,12 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         console.log(SelectedProperties.getPlayerSelected());
     };
 
+    $scope.get_attrs_giveitem = function(){
+        var string = "786879923" +SelectedProperties.getItemSelected().id + " " + "1" + " " + "1" + " " + "false";
+        console.log(string)
+        return string;
+    };
+
 
     $scope.clear_result = function () {
         angular.element("#result-results").html("");

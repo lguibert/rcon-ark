@@ -2,7 +2,7 @@ app.factory('ItemsFactory', ['$http', '$q', function ($http, $q) {
     return {
         getItems: function () {
             var deferred = $q.defer();
-            $http.get(server + 'items/', {cache: true})
+            $http.get(server + 'items/',  {cache: true})
                 .success(function (data) {
                     deferred.resolve(data);
                 })
@@ -31,8 +31,15 @@ app.controller('ItemsController', ['$scope', '$rootScope', 'superCache', 'ItemsF
             }
         };
 
-        $scope.search_item = function () {
+        $scope.search_item = function (searched) {
+            patt = new RegExp(searched.toLowerCase());
+            for(i = 0; i < Object.keys($scope.items).length; i++){
+                if(!patt.test($scope.items[i].name)){
 
+                }else{
+                    console.log($scope.items[i].name.toLowerCase());
+                }
+            }
         };
 
         $scope.set_selected = function (item) {
@@ -42,4 +49,8 @@ app.controller('ItemsController', ['$scope', '$rootScope', 'superCache', 'ItemsF
         $scope.is_selected = function (item) {
             return SelectedProperties.getItemSelected() === item;
         };
+
+        $scope.get_item_selected = function(){
+            return SelectedProperties.getItemSelected();
+        }
     }]);
