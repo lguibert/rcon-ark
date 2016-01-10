@@ -1,4 +1,4 @@
-var app = angular.module('rcon-ark', ['ngAnimate', 'ui.router']);
+var app = angular.module('rcon-ark', ['ngAnimate', 'ui.router', 'pascalprecht.translate']);
 //var server = "http://tools.nexusrcon.net/ark-api/";
 var server = "http://dev.lucasguibert.com:8003/";
 

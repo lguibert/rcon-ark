@@ -12,6 +12,11 @@
 
 @back_transparent: rgba(255,255,255,0.5);
 
+@nav_background: #222222;
+@nav_text_color: #9d9d9d;
+
+@controller_height: 32px;
+
 html{
   background: no-repeat left top;
   background-size: 100%;
@@ -179,6 +184,7 @@ footer {
   color: white;
   margin-top: 1px;
 }
+
 .inputs-parent{
   text-align: center;
   .inputs{
@@ -234,19 +240,16 @@ footer {
 #players-controller, #items-controller{
   background-color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  height: 32px;
+  height: @controller_height;
   img{
-    width: 32px;
-    height: 32px;
+    width: @controller_height;
+    height: @controller_height;
     position: relative;
     right: 0;
   }
   &:active{
     background-color: rgba(0, 0, 0, 0.25);
   }
-}
-
-#items-controller{
   div{
     display: inline-block;
   }
@@ -260,12 +263,12 @@ footer {
 
 #table-items{
   tr{
-    color:white;
     &.darker{
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgb(162, 162, 162);
+      color:white;
     }
     &.lighter{
-      background-color: rgba(0, 0, 0, 0.45);
+      background-color: rgb(72, 72, 72);
     }
   }
   td{
@@ -277,4 +280,58 @@ footer {
     }
   }
 }
+
+#languages {
+  color:@nav_text_color;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  background-color: @nav_background;
+  li {
+    background-color: @nav_background;
+    display: inline-block;
+    position: relative;
+    &:hover{
+      cursor: pointer;
+      ul {
+        max-height: 15em;
+      }
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+
+    position: relative;
+    top:15px;
+    z-index: 1000;
+    max-height: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    -moz-transition: .8s all .3s;
+    -webkit-transition: .8s all .3s;
+    transition: .8s all .3s;
+    li {
+      padding: 0 15px 0 15px;
+      display: inherit;
+      &:hover {
+        border-radius: 0;
+        background-color: @nav_text_color;
+      }
+      &:active{
+        background-color: @color_success;
+      }
+    }
+  }
+}
+/* background des liens menus
+#languages li{
+  background-color: #ffffff;
+  background-image:-webkit-linear-gradient(top, #65537A 0%, #2A2333 100%);
+  background-image:linear-gradient(to bottom, #65537A 0%, #2A2333 100%);
+}*/
 
