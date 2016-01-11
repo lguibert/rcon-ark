@@ -5,17 +5,15 @@
                 <img src="media/img/refresh.png">
             </div>
             <div class="search">
-                <input type="text" ng-model="searched_item" placeholder="{{'LOOKING_FOR_ITEM' | translate}}"
-                       ng-change="search_item(searched_item)"/>
+                <input type="text" ng-model="searchedItem" placeholder="{{'LOOKING_FOR_ITEM' | translate}}"/>
             </div>
         </div>
         <div id="items" class="items">
             <table id="table-items">
-                <tr ng-repeat="item in items track by $index"
+                <tr ng-repeat="item in items | custom:searchedItem"
                     ng-class="{darker: $index % 2 == 0, lighter: $index % 2 != 0, active: is_selected(item)}"
                     ng-click="set_selected(item)">
-                    <td ng-if="$index==0">{{item.icone}}</td>
-                    <td ng-if="$index!=0"><img src="{{item.icone}}"/></td>
+                    <td><img src="{{item.icone}}"/></td>
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                 </tr>

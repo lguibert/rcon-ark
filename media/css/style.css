@@ -237,6 +237,12 @@ footer {
 #items-controller .search {
   width: 75%;
 }
+#table-items {
+  width: 100%;
+}
+#table-items tr {
+  width: 283px;
+}
 #table-items tr.darker {
   background-color: #a2a2a2;
   color: white;
