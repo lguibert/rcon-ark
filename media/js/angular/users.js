@@ -10,8 +10,6 @@ app.factory('AuthService', function ($http, Session) {
         }).success(function (res) {
             Session.create(res[0], res[1], res[2]);
             return res;
-        }).error(function (msg) {
-            angular.element("#debug").append(msg);
         });
     };
 
@@ -30,11 +28,11 @@ app.factory('AuthService', function ($http, Session) {
     return authService;
 });
 
-app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService, Session, $location) {
+app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService, Session, $location, $translate) {
     $scope.settings = {
         server: null,
         password: null,
-        port: 32230
+        port: 32332
     };
 
     $scope.login = function (credentials) {
@@ -42,8 +40,11 @@ app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, Aut
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
             $scope.setCurrentUser(user.data);
             $location.path("/commands");
-        }, function () {
-            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+        }, function (msg) {
+            if(msg.status == 521){
+                $("#message").html("<div class='error'>Le serveur n'est pas disponible. Vérifier vos paramètres.</div class='error'>");
+            }
+            //$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         });
     };
 

@@ -24,7 +24,10 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CONFIRM_CLICK': 'Are you sure you want to do this action ?',
         'SERVER_REQUIRED' : 'Server name is required.',
         'PORT_REQUIRED': 'The port is required.',
-        'PASSWORD_REQUIRED': 'The password is required.'
+        'PASSWORD_REQUIRED': 'The password is required.',
+        'SERVER': 'Server',
+        'PORT': 'Port',
+        'PASSWORD': 'Password'
     });
 
     $translateProvider.translations('fr', {
@@ -52,7 +55,10 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CONFIRM_CLICK': 'Etes-vous sûr de vouloir faire cette action ?',
         'SERVER_REQUIRED': 'L\'adresse du server est obligatoire.',
         'PORT_REQUIRED': 'Le port est obligatoire.',
-        'PASSWORD_REQUIRED': 'Le mot de passe est obligatoire'
+        'PASSWORD_REQUIRED': 'Le mot de passe est obligatoire',
+        'SERVER': 'Serveur',
+        'PORT': 'Port',
+        'PASSWORD': 'Mot de passe'
     });
 
     $translateProvider.preferredLanguage('fr');

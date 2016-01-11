@@ -4,7 +4,7 @@
         <input type="hidden">
 
         <div class="bloc-login">
-            <label for="server">Server:</label>
+            <label for="server">{{'SERVER' | translate}}:</label>
             <input id="server" name="server" type="text" ng-model="settings.server" class="form-control" required/>
 
             <div ng-show="loginForm.$submitted || loginForm.server.$touched">
@@ -15,7 +15,7 @@
 
 
         <div class="bloc-login">
-            <label for="port">Port:</label>
+            <label for="port">{{'PORT' | translate}}:</label>
             <input id="port" name="port" type="number" min="0" ng-model="settings.port" class="form-control" required/>
 
             <div ng-show="loginForm.$submitted || loginForm.port.$touched">
@@ -26,7 +26,7 @@
 
 
         <div class="bloc-login">
-            <label for="password">Password:</label>
+            <label for="password">{{'PASSWORD' | translate}}:</label>
             <input id="password" name="password" type="password" ng-model="settings.password" class="form-control" required/>
 
             <div ng-show="loginForm.$submitted || loginForm.password.$touched">
@@ -37,4 +37,8 @@
 
         <button ng-disabled="loginForm.$invalid" ng-class="{true: 'disabled'}[loginForm.$invalid]" type="submit" class="btn btn-primary">{{'LOGIN' | translate}}</button>
     </form>
+
+
+<div id="message"></div>
+
 </div>
