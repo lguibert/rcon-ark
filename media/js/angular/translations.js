@@ -13,13 +13,18 @@ app.config(['$translateProvider', function ($translateProvider) {
         'LOADING': 'Loading',
         'CLEAR_RESULT': 'Clear results',
         'CHANGE_BACKGROUND_RANDOM': 'Change background randomly',
-        'LOGOUT': 'Logout',
-        'LOGIN': 'Login',
+        'LOGOUT': 'Change settings',
+        'LOGIN': 'Go',
         'NAME': 'Name',
         'LOOKING_FOR_ITEM': 'Search for item...',
         'LOOKING_FOR_PLAYER': 'Search for player...',
         'RELOAD_LIST_PLAYER': 'Reload players list',
-        'RELOAD_LIST_ITEM': 'Reload items list'
+        'RELOAD_LIST_ITEM': 'Reload items list',
+        'TITLE_COMMAND': 'Commands List',
+        'CONFIRM_CLICK': 'Are you sure you want to do this action ?',
+        'SERVER_REQUIRED' : 'Server name is required.',
+        'PORT_REQUIRED': 'The port is required.',
+        'PASSWORD_REQUIRED': 'The password is required.'
     });
 
     $translateProvider.translations('fr', {
@@ -36,13 +41,18 @@ app.config(['$translateProvider', function ($translateProvider) {
         'LOADING': 'Chargement',
         'CLEAR_RESULT': 'Supprimer les résultats',
         'CHANGE_BACKGROUND_RANDOM': 'Changer le fond d\'écran (aléatoire)',
-        'LOGOUT': 'Déconnexion',
-        'LOGIN': 'Connexion',
+        'LOGOUT': 'Changer les réglages',
+        'LOGIN': 'Go',
         'NAME': 'Nom',
         'LOOKING_FOR_ITEM': 'Rechercher un item...',
         'LOOKING_FOR_PLAYER': 'Rechercher un joueur...',
         'RELOAD_LIST_PLAYER': 'Recharger la liste des joueurs',
-        'RELOAD_LIST_ITEM': 'Recharger la liste des items'
+        'RELOAD_LIST_ITEM': 'Recharger la liste des items',
+        'TITLE_COMMAND': 'Liste des commandes',
+        'CONFIRM_CLICK': 'Etes-vous sûr de vouloir faire cette action ?',
+        'SERVER_REQUIRED': 'L\'adresse du server est obligatoire.',
+        'PORT_REQUIRED': 'Le port est obligatoire.',
+        'PASSWORD_REQUIRED': 'Le mot de passe est obligatoire'
     });
 
     $translateProvider.preferredLanguage('fr');

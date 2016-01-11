@@ -82,16 +82,17 @@ app.constant('USER_ROLES', {
 app.directive('ngConfirmClick', [
     function () {
         return {
-            priority: 1,
-            terminal: true,
-            link: function (scope, element, attr) {
-                var msg = attr.ngConfirmClick || "Etes-vous sûr de vouloir faire cette action?";
-                var clickAction = attr.ngClick;
-                element.bind('click', function () {
-                    if (window.confirm(msg)) {
-                        scope.$eval(clickAction)
+            priority: -1,
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                element.bind('click', function (e) {
+                    var message = attrs.ngConfirmClick;
+                    if (message && !confirm(message)) {
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
                     }
                 });
             }
-        };
-    }]);
+        }
+    }
+]);

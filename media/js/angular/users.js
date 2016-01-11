@@ -31,10 +31,12 @@ app.factory('AuthService', function ($http, Session) {
 });
 
 app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService, Session, $location) {
-    $scope.credentials = {
-        username: '',
-        password: ''
+    $scope.settings = {
+        server: null,
+        password: null,
+        port: 32230
     };
+
     $scope.login = function (credentials) {
         AuthService.login(credentials).then(function (user) {
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);

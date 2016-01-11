@@ -74,7 +74,7 @@ app.service('SelectedProperties', function () {
     };
 });
 
-app.filter('custom', function () {
+app.filter('customSearch', function () {
     return function (input, search) {
         if (!input) return input;
         if (!search) return input;
@@ -86,11 +86,6 @@ app.filter('custom', function () {
                 result[key] = value;
             }
         });
-
-        if(Object.keys(result).length < 10){
-            console.log(result);
-        }
-
         return result;
     }
 });
