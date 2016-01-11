@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectTasksOptions" suppressed-tasks="Less">
-    <TaskOptions isEnabled="true">
+    <TaskOptions isEnabled="false">
       <option name="arguments" value="--no-color $FileName$" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" value="Compiles .less files into .css files" />
@@ -20,6 +20,7 @@
         </array>
       </option>
       <option name="outputFromStdout" value="true" />
+      <option name="passParentEnvs" value="true" />
       <option name="program" value="$USER_HOME$/AppData/Roaming/npm/lessc.cmd" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="false" />
