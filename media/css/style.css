@@ -5,20 +5,19 @@ html {
 body {
   background: none;
 }
+nav a:hover {
+  cursor: pointer;
+}
 .fullsized {
   height: 100%;
   width: 100%;
 }
 #wrap {
-  padding-left: 10px;
-  padding-right: 10px;
+  /*padding-left: 10px;
+  padding-right: 10px;*/
 }
 #wrap #main {
   overflow: auto;
-}
-#commands-root {
-  background-color: rgba(255, 255, 255, 0.5);
-  padding-bottom: 20px;
 }
 .error {
   background-color: #FFCCCC;
@@ -51,6 +50,15 @@ body {
 #result-results i {
   width: 80px;
   display: inline-block;
+}
+#main_myservers {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#main_myservers i:hover {
+  cursor: pointer;
+}
+#main_myservers i:active {
+  color: yellow;
 }
 #login {
   position: absolute;
@@ -86,10 +94,10 @@ body {
   background-color: #B9F6CA;
   color: white;
 }
-#message {
+#messageLogin {
   position: relative;
   bottom: 0;
-  margin-top: 305px;
+  margin-top: 250px;
 }
 .disabled {
   background-color: lightgrey;
@@ -173,22 +181,38 @@ footer {
   display: inline-block;
   text-align: center;
 }
-#items-container {
-  left: 30px;
-  top: 60px;
+/*
+#items-container{
+  left:30px;
+  top:60px;
+}
+
+#players-container{
+  right:35px;
+}
+*/
+#commands-root {
+  padding-left: 0;
+  padding-right: 0;
+  margin: auto;
 }
 #players-container {
-  right: 35px;
+  padding: 0;
+}
+#items-container {
+  padding: 0;
+  margin-right: 5px;
+}
+#main-command {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 20px;
+  width: 60%;
 }
 #players-container,
 #items-container {
-  height: 90%;
-  width: 300px;
-  position: absolute;
-  top: 60px;
-  background-color: rgba(255, 255, 255, 0.5);
+  height: 85vh;
+  width: 15%;
   overflow-y: auto;
-  margin: auto;
   text-align: center;
 }
 #players-container .players,
@@ -213,6 +237,10 @@ footer {
 #players-container .players.active,
 #items-container .players.active {
   background-color: rgba(53, 220, 0, 0.8);
+}
+#players-container #items,
+#items-container #items {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .active {
   background-color: rgba(53, 220, 0, 0.8) !important;
@@ -311,4 +339,42 @@ footer {
 }
 #languages ul li:active {
   background-color: #3c763d;
+}
+#servers .server {
+  width: 150px;
+  border: 1px solid #9d9d9d;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 10px 0 10px;
+  margin: 10px;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  text-align: center;
+}
+#servers .server:hover {
+  cursor: pointer;
+}
+#servers .server h4 {
+  font-size: 14px;
+  margin: 0;
+  text-decoration: underline;
+}
+#servers .server .infos {
+  margin-top: 5px;
+}
+#servers .server .infos .info {
+  margin-bottom: 10px;
+}
+#servers .server .top i {
+  position: relative;
+  right: -65px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(2, 2, 2, 0.5);
 }

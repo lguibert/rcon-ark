@@ -1,33 +1,21 @@
-<div id="login" class="form-group col-xs-12 col-lg-12 col-md-12">
-    <form role="form" name="loginForm" ng-controller="LoginController" class="col-xs-3 col-lg-3 col-md-3" ng-submit="login(settings)" novalidate>
+<div id="login" class="form-group col-xs-12 col-lg-12 col-md-12" ng-controller="LoginController">
+    <form role="form" name="loginForm" class="col-xs-3 col-lg-3 col-md-3" ng-submit="login(user)" novalidate>
         <input type="hidden">
         <input type="hidden">
 
         <div class="bloc-login">
-            <label for="server">{{'SERVER' | translate}}:</label>
-            <input id="server" name="server" type="text" ng-model="settings.server" class="form-control" required/>
+            <label for="username">{{'USERNAME' | translate}}:</label>
+            <input id="username" name="username" type="text" ng-model="user.username" class="form-control" required/>
 
-            <div ng-show="loginForm.$submitted || loginForm.server.$touched">
-                <div class="error" ng-show="loginForm.server.$error.required">{{'SERVER_REQUIRED' | translate}}
+            <div ng-show="loginForm.$submitted || loginForm.username.$touched">
+                <div class="error" ng-show="loginForm.username.$error.required">{{'USERNAME_REQUIRED' | translate}}
                 </div>
             </div>
         </div>
-
-
-        <div class="bloc-login">
-            <label for="port">{{'PORT' | translate}}:</label>
-            <input id="port" name="port" type="number" min="0" ng-model="settings.port" class="form-control" required/>
-
-            <div ng-show="loginForm.$submitted || loginForm.port.$touched">
-                <div class="error" ng-show="loginForm.port.$error.required">{{'PORT_REQUIRED' | translate}}
-                </div>
-            </div>
-        </div>
-
 
         <div class="bloc-login">
             <label for="password">{{'PASSWORD' | translate}}:</label>
-            <input id="password" name="password" type="password" ng-model="settings.password" class="form-control" required/>
+            <input id="password" name="password" type="password" ng-model="user.password" class="form-control" required/>
 
             <div ng-show="loginForm.$submitted || loginForm.password.$touched">
                 <div class="error" ng-show="loginForm.password.$error.required">{{'PASSWORD_REQUIRED' | translate}}
@@ -39,6 +27,6 @@
     </form>
 
 
-<div id="message"></div>
+<div id="messageLogin" ng-show="messageLogin"></div>
 
 </div>

@@ -32,22 +32,23 @@ body{
   border-radius: @radius;
 }
 
+nav{
+  a:hover{
+    cursor: pointer;
+  }
+}
+
 .fullsized{
   height: 100%;
   width: 100%;
 }
 
 #wrap {
-  padding-left: 10px;
-  padding-right: 10px;
+  /*padding-left: 10px;
+  padding-right: 10px;*/
   #main{
     overflow: auto;
   }
-}
-
-#commands-root{
-  background-color: @back_transparent;
-  padding-bottom: 20px;
 }
 
 .error{
@@ -87,6 +88,17 @@ body{
   }
 }
 
+#main_myservers{
+  background-color: @back_transparent;
+  i:hover{
+    cursor: pointer;
+  }
+  i:active{
+    color:yellow;
+  }
+
+}
+
 #login{
   position: absolute;
   left:35%;
@@ -124,10 +136,10 @@ body{
   &.error{};
 }
 
-#message{
+#messageLogin{
   position: relative;
   bottom: 0;
-  margin-top: 305px;
+  margin-top: 250px;
 }
 
 .disabled{
@@ -203,7 +215,7 @@ footer {
   }
 }
 
-
+/*
 #items-container{
   left:30px;
   top:60px;
@@ -212,15 +224,37 @@ footer {
 #players-container{
   right:35px;
 }
+*/
+
+#commands-root{
+  padding-left: 0;
+  padding-right: 0;
+  //width: 1750px;
+  margin: auto;
+}
+
+#players-container{
+  padding:0;
+}
+
+#items-container{
+  padding:0;
+  margin-right: 5px;
+}
+
+#main-command{
+  background-color: @back_transparent;
+  padding-bottom: 20px;
+  width: 60%;
+}
 
 #players-container, #items-container{
-  height:90%;
-  width: 300px;
-  position: absolute;
-  top:60px;
-  background-color: @back_transparent;
+  height: 85vh;
+  width: 15%;
+  //position: absolute;
+  //top:60px;
+  //background-color: @back_transparent;
   overflow-y: auto;
-  margin: auto;
   text-align: center;
   .players{
     display: inline-block;
@@ -238,6 +272,9 @@ footer {
     &.active{
       background-color: rgba(53, 220, 0, 0.8);
     }
+  }
+  #items{
+    background-color: @back_transparent;
   }
 }
 
@@ -339,6 +376,50 @@ footer {
       }
     }
   }
+}
+
+#servers{
+  .server{
+    width: 150px;
+    border:1px solid @nav_text_color;
+    .border-radius(5px);
+    padding: 0 10px 0 10px;
+    margin: 10px;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color:white;
+    text-align: center;
+    &:hover{
+      cursor: pointer;
+    }
+    h4{
+      font-size: 14px;
+      margin: 0;
+      text-decoration: underline;
+    }
+    .infos{
+      margin-top: 5px;
+      .info{
+        margin-bottom: 10px;
+      }
+    }
+    .top{
+      i{
+        position: relative;
+        right: -65px;
+      }
+    }
+  }
+}
+
+
+
+footer{
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(2,2,2,0.5);
 }
 
 

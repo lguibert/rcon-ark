@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="media/css/animate.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="media/css/style.css">
 </head>
@@ -15,7 +16,7 @@
         <div class="container">
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="navbar-left" ng-controller="ToolsController">
-                    <a class="navbar-brand" href="#" ng-click="get_backgrounds_ramdom()">{{'CHANGE_BACKGROUND_RANDOM' | translate}}</a>
+                    <a class="navbar-brand" ng-click="get_backgrounds_ramdom()">{{'CHANGE_BACKGROUND_RANDOM' | translate}}</a>
                     <!--<a class="navbar-brand" href="#" ng-click="get_backgrounds()">Changer le fond d'écran</a>-->
                 </div>
 
@@ -24,7 +25,7 @@
                 </div>
                 <div class="navbar-right navbar-brand" ng-controller="TranslationController">
                     <ul id="languages">
-                        <li>Langage
+                        <li>{{'LANGUAGE' | translate}}
                             <ul>
                                 <li ng-click="changeLanguage('fr')"><img src="media/img/france.png"/></li>
                                 <li ng-click="changeLanguage('en')"><img src="media/img/britain.png"/></li>
@@ -38,27 +39,28 @@
 </header>
 <section id="wrap">
     <div id="main">
-        <div ui-view></div>
+        <div id="ui-view" class="container-fluid" ng-view></div>
     </div>
 </section>
+<footer>Bob</footer>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="media/js/header.js"></script>
 
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-<script src="bower_components/angular-cookie/angular-cookie.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 <script src="bower_components/angular-translate/angular-translate.min.js"></script>
 
 <script src="media/js/angular/app.js"></script>
-<script src="media/js/angular/users.js"></script>
 <script src="media/js/angular/routes.js"></script>
+<script src="media/js/angular/users.js"></script>
 <script src="media/js/angular/commandes.js"></script>
 <script src="media/js/angular/tools.js"></script>
-<script src="media/js/angular/scripts.js"></script>
 <script src="media/js/angular/items.js"></script>
 <script src="media/js/angular/translations.js"></script>
+<script src="media/js/angular/servers.js"></script>
 </body>
 </html>

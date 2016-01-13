@@ -1,6 +1,6 @@
 app.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.translations('en', {
-        'TITLE': 'Hello',
+        'LANGUAGE': 'Language',
         'LIST_ALL_PLAYERS': 'List all online players',
         'FRENCH': 'French',
         'ENGLISH': 'English',
@@ -13,7 +13,7 @@ app.config(['$translateProvider', function ($translateProvider) {
         'LOADING': 'Loading',
         'CLEAR_RESULT': 'Clear results',
         'CHANGE_BACKGROUND_RANDOM': 'Change background randomly',
-        'LOGOUT': 'Change settings',
+        'LOGOUT': 'Logout',
         'LOGIN': 'Go',
         'NAME': 'Name',
         'LOOKING_FOR_ITEM': 'Search for item...',
@@ -27,11 +27,16 @@ app.config(['$translateProvider', function ($translateProvider) {
         'PASSWORD_REQUIRED': 'The password is required.',
         'SERVER': 'Server',
         'PORT': 'Port',
-        'PASSWORD': 'Password'
+        'PASSWORD': 'Password',
+        'USERNAME': 'Username',
+        'USERNAME_REQUIRED':'Your username is required.',
+        'MYSERVERS': 'My servers',
+        'SERVER_NAME': 'Server name',
+        'SERVER_ADDRESS': 'Server address'
     });
 
     $translateProvider.translations('fr', {
-        'TITLE': 'Hallo',
+        'LANGUAGE': 'Langage',
         'LIST_ALL_PLAYERS': 'Lister les joueurs en ligne',
         'FRENCH': 'Français',
         'ENGLISH': 'Anglais',
@@ -44,7 +49,7 @@ app.config(['$translateProvider', function ($translateProvider) {
         'LOADING': 'Chargement',
         'CLEAR_RESULT': 'Supprimer les résultats',
         'CHANGE_BACKGROUND_RANDOM': 'Changer le fond d\'écran (aléatoire)',
-        'LOGOUT': 'Changer les réglages',
+        'LOGOUT': 'Déconnexion',
         'LOGIN': 'Go',
         'NAME': 'Nom',
         'LOOKING_FOR_ITEM': 'Rechercher un item...',
@@ -58,7 +63,12 @@ app.config(['$translateProvider', function ($translateProvider) {
         'PASSWORD_REQUIRED': 'Le mot de passe est obligatoire',
         'SERVER': 'Serveur',
         'PORT': 'Port',
-        'PASSWORD': 'Mot de passe'
+        'PASSWORD': 'Mot de passe',
+        'USERNAME': 'Nom d\'utilisateur',
+        'USERNAME_REQUIRED':'Votre nom d\'utilisateur est obligatoire',
+        'MYSERVERS': 'Mes serveurs',
+        'SERVER_NAME': 'Nom du serveur',
+        'SERVER_ADDRESS': 'Adresse du serveur'
     });
 
     $translateProvider.preferredLanguage('fr');

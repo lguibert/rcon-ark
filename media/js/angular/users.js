@@ -22,7 +22,7 @@ app.factory('AuthService', function ($http, Session) {
             authorizedRoles = [authorizedRoles];
         }
         return (authService.isAuthenticated() &&
-        authorizedRoles.indexOf(Session.userRole) !== -1);         
+        authorizedRoles.indexOf(Session.userRole) !== -1);
     };
 
     return authService;
@@ -37,13 +37,14 @@ app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, Aut
 
     $scope.login = function (credentials) {
         AuthService.login(credentials).then(function (user) {
+            delete $scope.messageLogin;
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
             $scope.setCurrentUser(user.data);
-            $location.path("/commands");
+            $location.path("/myservers");
         }, function (msg) {
-            if(msg.status == 521){
-                $("#message").html("<div class='error'>Le serveur n'est pas disponible. Vérifier vos paramètres.</div class='error'>");
-            }
+            console.log(msg);
+            $scope.messageLogin = true;
+            $("#messageLogin").html("<div class='error'>Problème lors de la connexion. Vérifier vos paramètres.</div>");
             //$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         });
     };

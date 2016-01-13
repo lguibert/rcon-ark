@@ -1,6 +1,6 @@
-<div class="container" id="commands-root" ng-controller="CommandesController" ng-init="check_user()">
-    <div id="items-container" ng-controller="ItemsController">
-        <div id="items-controller">
+<div id="commands-root" ng-controller="CommandesController" class="col-xs-12 col-lg-12 col-md-12" ng-init="check_user()">
+    <div id="items-container" ng-controller="ItemsController" class="col-xs-2 col-lg-2 col-md-2">
+        <div id="items-controller" >
             <div class="refresh" ng-click="create_list_items()" title="{{'RELOAD_LIST_ITEM' | translate}}">
                 <img src="media/img/refresh.png">
             </div>
@@ -20,85 +20,85 @@
             </table>
         </div>
     </div>
+    <div id="main-command" class="col-xs-7 col-lg-7 col-md-7">
+        <div id="contain-commands">
+            <h1>{{'TITLE_COMMAND' | translate}}</h1>
 
-    <div id="contain-commands">
-        <h1>{{'TITLE_COMMAND' | translate}}</h1>
-
-        <div id="commands">
-            <div class="col-xs-12 col-lg-12 col-md-12 easy_commands">
-                <div class="col-xs-12 col-lg-12 col-md-12">
-                    <div class="col-xs-6 col-lg-3 col-md-3">
-                        <div class="btn btn-success" ng-click="send_command('ListPlayers')">
-                            {{'LIST_ALL_PLAYERS' | translate}}
+            <div id="commands">
+                <div class="col-xs-12 col-lg-12 col-md-12 easy_commands">
+                    <div class="col-xs-12 col-lg-12 col-md-12">
+                        <div class="col-xs-6 col-lg-3 col-md-3">
+                            <div class="btn btn-success" ng-click="send_command('ListPlayers')">
+                                {{'LIST_ALL_PLAYERS' | translate}}
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-3 col-md-3 inputs-parent">
+                            <div class="btn btn-success"
+                                 ng-click="send_command('SetTimeOfDay', default[0].hour + ':' + default[0].minute)">
+                                {{'SET_TIME' | translate}}
+                            </div>
+                            <div class="inputs">
+                                <label for="hour">H:</label>
+                                <input id="hour" name="hour" type="number" max="23" min="0" step="1"
+                                       ng-model="default[0].hour"/>
+                                <label for="minute">m:</label>
+                                <input id="minute" name="minute" type="number" max="60" min="0" step="1"
+                                       ng-model="default[0].minute"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-3 col-md-3 inputs-parent">
+                            <div class="btn btn-success" ng-click="send_command('Broadcast', broadcast_text)">
+                                {{'SEND_MESSAGE' | translate}}
+                            </div>
+                            <div class="inputs">
+                                <textarea name="broadcast_text" ng-model="broadcast_text"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-3 col-md-3">
+                            <div class="btn btn-success" ng-click="send_command('saveworld')">
+                                {{'SAVE_WORLD' | translate}}
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-lg-3 col-md-3 inputs-parent">
-                        <div class="btn btn-success"
-                             ng-click="send_command('SetTimeOfDay', default[0].hour + ':' + default[0].minute)">
-                            {{'SET_TIME' | translate}}
-                        </div>
-                        <div class="inputs">
-                            <label for="hour">H:</label>
-                            <input id="hour" name="hour" type="number" max="23" min="0" step="1"
-                                   ng-model="default[0].hour"/>
-                            <label for="minute">m:</label>
-                            <input id="minute" name="minute" type="number" max="60" min="0" step="1"
-                                   ng-model="default[0].minute"/>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-lg-3 col-md-3 inputs-parent">
-                        <div class="btn btn-success" ng-click="send_command('Broadcast', broadcast_text)">
-                            {{'SEND_MESSAGE' | translate}}
-                        </div>
-                        <div class="inputs">
-                            <textarea name="broadcast_text" ng-model="broadcast_text"/>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-lg-3 col-md-3">
-                        <div class="btn btn-success" ng-click="send_command('saveworld')">
-                            {{'SAVE_WORLD' | translate}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-lg-12 col-md-12">
-                    <div class="col-xs-6 col-lg-3 col-md-3">
-                        <div class="btn btn-success"
-                             ng-click="send_command('giveitemnumtoplayer', get_attrs_giveitem())">
-                            {{'GIVE_ITEM' | translate}}
+                    <div class="col-xs-12 col-lg-12 col-md-12">
+                        <div class="col-xs-6 col-lg-3 col-md-3">
+                            <div class="btn btn-success"
+                                 ng-click="send_command('giveitemnumtoplayer', get_attrs_giveitem())">
+                                {{'GIVE_ITEM' | translate}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-lg-12 col-md-12 hard_commands">
-                <div class="col-xs-5 col-lg-3 col-md-3">
-                    <div class="btn btn-danger" ng-confirm-click="{{'CONFIRM_CLICK' | translate}}"
-                         ng-click="send_command('destroywilddinos')">
-                        {{'KILL_WILD' | translate}}
+                <div class="col-xs-12 col-lg-12 col-md-12 hard_commands">
+                    <div class="col-xs-5 col-lg-3 col-md-3">
+                        <div class="btn btn-danger" ng-confirm-click="{{'CONFIRM_CLICK' | translate}}"
+                             ng-click="send_command('destroywilddinos')">
+                            {{'KILL_WILD' | translate}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-5 col-lg-2 col-md-3">
-                    <div class="btn btn-danger" ng-confirm-click="{{'CONFIRM_CLICK' | translate}}"
-                         ng-click="send_command('banplayer')">
-                        {{'BAN_PLAYER' | translate}}
+                    <div class="col-xs-5 col-lg-2 col-md-3">
+                        <div class="btn btn-danger" ng-confirm-click="{{'CONFIRM_CLICK' | translate}}"
+                             ng-click="send_command('banplayer')">
+                            {{'BAN_PLAYER' | translate}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-xs-12 col-lg-12 col-md-12" id="result" ng-controller="MainController">
-        <div id="result-results"></div>
-        <div class="loading" ng-show="loading">
-            <div id="loading">
-                <img src="media/img/loader.gif"/>
-                <span>{{'LOADING' | translate}}...</span>
+        <div  id="result" ng-controller="MainController">
+            <div id="result-results"></div>
+            <div class="loading" ng-show="loading">
+                <div id="loading">
+                    <img src="media/img/loader.gif"/>
+                    <span>{{'LOADING' | translate}}...</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-xs-12 col-lg-12 col-md-12" id="result-controllers">
+        <div  id="result-controllers">
         <button class="btn btn-warning" ng-click="clear_result()">{{'CLEAR_RESULT' | translate}}</button>
     </div>
-
-    <div id="players-container">
+    </div>
+    <div id="players-container" class="col-xs-2 col-lg-2 col-md-2">
         <div id="players-controller">
             <div class="refresh" ng-click="get_online_players()" title="{{'RELOAD_LIST_PLAYER' | translate}}">
                 <img src="media/img/refresh.png">

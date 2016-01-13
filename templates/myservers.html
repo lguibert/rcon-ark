@@ -1,0 +1,22 @@
+<div id="main_myservers" class="container" ng-controller="ServersController">
+    <h1>{{'MYSERVERS' | translate}} <i class="fa fa-plus-circle"></i></h1>
+
+
+    <div id="servers">
+        <div class="server" ng-repeat="server in servers" >
+            <div class="top">
+                <i class="fa fa-minus-circle" ng-click="show_text('just tiny truc')"></i>
+            </div>
+            <div class="infos" ng-click="show_text('All truc')">
+                <div class="info">
+                    <h4>{{'SERVER_NAME' | translate}}</h4>
+                    {{server.name}}
+                </div>
+                <div clas="info">
+                    <h4>{{'SERVER_ADDRESS' | translate}}</h4>
+                    {{server.address}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
