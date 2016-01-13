@@ -11,6 +11,7 @@
 @max_size: 200px;
 
 @back_transparent: rgba(255,255,255,0.5);
+@back_transparent_strong: rgba(255,255,255,0.85);
 
 @nav_background: #222222;
 @nav_text_color: #9d9d9d;
@@ -406,10 +407,26 @@ footer {
     .top{
       i{
         position: relative;
-        right: -65px;
+        &:first-child{
+          right: -50px;
+        }
+        &:last-child{
+          right: -55px;
+        }
+
       }
     }
   }
+}
+
+#changeServer{
+  position: absolute;
+  background-color: @back_transparent_strong;
+  padding: 10px;
+  top:10%;
+  left:45%;
+  display: none;
+  width:260px;
 }
 
 

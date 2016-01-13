@@ -369,7 +369,21 @@ footer {
 }
 #servers .server .top i {
   position: relative;
-  right: -65px;
+}
+#servers .server .top i:first-child {
+  right: -50px;
+}
+#servers .server .top i:last-child {
+  right: -55px;
+}
+#changeServer {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px;
+  top: 10%;
+  left: 45%;
+  display: none;
+  width: 260px;
 }
 footer {
   position: absolute;

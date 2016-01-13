@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="navbar-right" ng-controller="LoginController">
-                    <a class="navbar-brand" href="#" ng-click="logout()" ng-if="currentUser">{{'LOGOUT' | translate}}</a>
+                    <a class="navbar-brand" href="#" ng-click="logout()" ng-if="globals.currentUser">{{'LOGOUT' | translate}}</a>
                 </div>
                 <div class="navbar-right navbar-brand" ng-controller="TranslationController">
                     <ul id="languages">
@@ -56,11 +56,14 @@
 
 <script src="media/js/angular/app.js"></script>
 <script src="media/js/angular/routes.js"></script>
+<script src="media/js/angular/authservice.js"></script>
 <script src="media/js/angular/users.js"></script>
 <script src="media/js/angular/commandes.js"></script>
 <script src="media/js/angular/tools.js"></script>
 <script src="media/js/angular/items.js"></script>
 <script src="media/js/angular/translations.js"></script>
 <script src="media/js/angular/servers.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+<!--<script src="media/js/sha.js"></script>-->
 </body>
 </html>

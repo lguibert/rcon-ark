@@ -1,10 +1,11 @@
 <div id="main_myservers" class="container" ng-controller="ServersController">
-    <h1>{{'MYSERVERS' | translate}} <i class="fa fa-plus-circle"></i></h1>
+    <h1>{{'MYSERVERS' | translate}} <i class="fa fa-plus-circle" ng-click="showChangeServer()"></i></h1>
 
 
     <div id="servers">
-        <div class="server" ng-repeat="server in servers" >
+        <div class="server" ng-repeat="server in servers">
             <div class="top">
+                <i class="fa fa-pencil" ng-click="showChangeServer(server)"></i>
                 <i class="fa fa-minus-circle" ng-click="show_text('just tiny truc')"></i>
             </div>
             <div class="infos" ng-click="show_text('All truc')">
@@ -18,5 +19,46 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <div id="changeServer" class="animated">
+        <i class="fa fa-times-circle" ng-click="showChangeServer()"></i>
+        <form role="form" id="formServer" name="formServer" ng-submit="changeServer(server)" novalidate>
+            <div class="form-group">
+                <label for="name">{{'SERVER_NAME' | translate}}</label>
+                <input class="form-control" type="text" id="name" name="name" ng-model="server.name" required/>
+                <div ng-show="formServer.$submitted || formServer.name.$touched">
+                    <div class="error" ng-show="formServer.name.$error.required">{{'SERVERNAME_REQUIRED' | translate}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">{{'SERVER_ADDRESS' | translate}}</label>
+                <input class="form-control" type="text" id="address" name="address" ng-model="server.address" required/>
+                <div ng-show="formServer.$submitted || formServer.address.$touched">
+                    <div class="error" ng-show="formServer.address.$error.required">{{'ADDRESS_REQUIRED' | translate}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="port">{{'PORT' | translate}}</label>
+                <input class="form-control" type="number" id="port" name="port" ng-model="server.port" required/>
+                <div ng-show="formServer.$submitted || formServer.port.$touched">
+                    <div class="error" ng-show="formServer.port.$error.required">{{'PORT_REQUIRED' | translate}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">{{'PASSWORD' | translate}}</label>
+                <input class="form-control" type="password" id="password" name="password" ng-model="server.password" required/>
+                <div ng-show="formServer.$submitted || formServer.password.$touched">
+                    <div class="error" ng-show="formServer.password.$error.required">{{'PASSWORD_REQUIRED' | translate}}
+                    </div>
+                </div>
+            </div>
+            <button ng-disabled="formServer.$invalid" ng-class="{true: 'disabled'}[formServer.$invalid]" type="submit" class="btn btn-primary">{{'VALIDATION' | translate}}</button>
+        </form>
+
     </div>
 </div>

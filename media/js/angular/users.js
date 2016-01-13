@@ -1,34 +1,4 @@
-app.factory('AuthService', function ($http, Session) {
-    var authService = {};
-
-    authService.login = function (credentials) {
-        return $http({
-            method: 'POST',
-            url: server + 'login/',
-            data: credentials,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function (res) {
-            Session.create(res[0], res[1], res[2]);
-            return res;
-        });
-    };
-
-    authService.isAuthenticated = function () {
-        return !!Session.userId;
-    };
-
-    authService.isAuthorized = function (authorizedRoles) {
-        if (!angular.isArray(authorizedRoles)) {
-            authorizedRoles = [authorizedRoles];
-        }
-        return (authService.isAuthenticated() &&
-        authorizedRoles.indexOf(Session.userRole) !== -1);
-    };
-
-    return authService;
-});
-
-app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService, Session, $location, $translate) {
+/*app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService, Session, $location, $translate) {
     $scope.settings = {
         server: null,
         password: null,
@@ -68,4 +38,34 @@ app.service('Session', function () {
         this.userId = null;
         this.userRole = null;
     };
+});*/
+
+app.controller('LoginController', function ($scope, $rootScope, AuthenticationService, $location) {
+    $scope.credentials = {
+        username: '',
+        password: ''
+    };
+
+    $rootScope.logged = false;
+
+    $scope.login = function (credentials) {
+        credentials.password = String(CryptoJS.SHA256(credentials.password));
+        AuthenticationService.Login(credentials, function(response){
+            if(response.success){
+                AuthenticationService.SetCredentials(response.data[0], response.data[1], response.data[2]);
+                $rootScope.logged = true;
+                $rootScope.role = response.data[2];
+                $location.path('/myservers');
+            }else{
+                $scope.messageLogin = true;
+                $("#messageLogin").html("<div class='error'>Problème lors de la connexion. Vérifier vos paramètres.</div>");
+            }
+        });
+    };
+
+    $scope.logout = function (){
+        AuthenticationService.ClearCredentials();
+        $rootScope.logged = false;
+        $location.path("/login");
+    }
 });

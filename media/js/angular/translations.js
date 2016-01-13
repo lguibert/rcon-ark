@@ -15,6 +15,7 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CHANGE_BACKGROUND_RANDOM': 'Change background randomly',
         'LOGOUT': 'Logout',
         'LOGIN': 'Go',
+        'VALIDATION': 'Validation',
         'NAME': 'Name',
         'LOOKING_FOR_ITEM': 'Search for item...',
         'LOOKING_FOR_PLAYER': 'Search for player...',
@@ -32,7 +33,9 @@ app.config(['$translateProvider', function ($translateProvider) {
         'USERNAME_REQUIRED':'Your username is required.',
         'MYSERVERS': 'My servers',
         'SERVER_NAME': 'Server name',
-        'SERVER_ADDRESS': 'Server address'
+        'SERVERNAME_REQUIRED': 'Server name required',
+        'SERVER_ADDRESS': 'Server address',
+        'ADDRESS_REQUIRED': 'Server address is required'
     });
 
     $translateProvider.translations('fr', {
@@ -51,6 +54,7 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CHANGE_BACKGROUND_RANDOM': 'Changer le fond d\'écran (aléatoire)',
         'LOGOUT': 'Déconnexion',
         'LOGIN': 'Go',
+        'VALIDATION': 'Valider',
         'NAME': 'Nom',
         'LOOKING_FOR_ITEM': 'Rechercher un item...',
         'LOOKING_FOR_PLAYER': 'Rechercher un joueur...',
@@ -68,7 +72,9 @@ app.config(['$translateProvider', function ($translateProvider) {
         'USERNAME_REQUIRED':'Votre nom d\'utilisateur est obligatoire',
         'MYSERVERS': 'Mes serveurs',
         'SERVER_NAME': 'Nom du serveur',
-        'SERVER_ADDRESS': 'Adresse du serveur'
+        'SERVERNAME_REQUIRED': 'Nom du serveur requis',
+        'SERVER_ADDRESS': 'Adresse du serveur',
+        'ADDRESS_REQUIRED': 'L\'adresse du serveur est obligatoire'
     });
 
     $translateProvider.preferredLanguage('fr');

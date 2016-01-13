@@ -1,7 +1,7 @@
 var app = angular.module('rcon-ark', ['ngRoute', 'pascalprecht.translate', 'ngCookies', 'ngAnimate']);
 //var server = "http://tools.nexusrcon.net/ark-api/";
-//var server = "http://dev.lucasguibert.com:8003/";
-var server = "http://localhost:8003/";
+var server = "http://dev.lucasguibert.com:8003/";
+//var server = "http://localhost:8003/";
 
 app.service('LoadingState', ['$rootScope', function ($rootScope) {
     return {
@@ -15,21 +15,8 @@ app.service('LoadingState', ['$rootScope', function ($rootScope) {
     }
 }]);
 
-app.controller('MainController', ['$scope', '$rootScope', 'LoadingState', 'AuthService', 'USER_ROLES',
-    function ($scope, $rootScope, LoadingState, AuthService, USER_ROLES) {
-        $scope.currentUser = null;
-        $scope.userRoles = USER_ROLES;
-
-        $scope.isAuthorized = AuthService.isAuthorized;
-
-        $scope.setCurrentUser = function (user) {
-            $scope.currentUser = user;
-        };
-
-        $scope.deleteCurrentUser = function () {
-            delete $scope.currentUser;
-        };
-
+app.controller('MainController', ['$scope', '$rootScope', 'LoadingState',
+    function ($scope, $rootScope, LoadingState) {
 
         $rootScope.$on('ChangedState', function () {
             $scope.loading = LoadingState.getLoadingState();
@@ -63,18 +50,3 @@ app.controller('MainController', ['$scope', '$rootScope', 'LoadingState', 'AuthS
 app.factory('superCache', ['$cacheFactory', function ($cacheFactory) {
     return $cacheFactory('myData');
 }]);
-
-app.constant('AUTH_EVENTS', {
-    loginSuccess: 'auth-login-success',
-    loginFailed: 'auth-login-failed',
-    logoutSuccess: 'auth-logout-success',
-    sessionTimeout: 'auth-session-timeout',
-    notAuthenticated: 'auth-not-authenticated',
-    notAuthorized: 'auth-not-authorized'
-});
-
-app.constant('USER_ROLES', {
-    all: '*',
-    admin: 'admin',
-    guest: 'guest'
-});
