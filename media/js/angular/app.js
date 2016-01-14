@@ -1,7 +1,7 @@
 var app = angular.module('rcon-ark', ['ngRoute', 'pascalprecht.translate', 'ngCookies', 'ngAnimate']);
 //var server = "http://tools.nexusrcon.net/ark-api/";
-var server = "http://dev.lucasguibert.com:8003/";
-//var server = "http://localhost:8003/";
+//var server = "http://dev.lucasguibert.com:8003/";
+var server = "http://localhost:8003/";
 
 app.service('LoadingState', ['$rootScope', function ($rootScope) {
     return {

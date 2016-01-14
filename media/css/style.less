@@ -1,3 +1,5 @@
+@import (css) "spiner.css";
+
 @bg_error: #FFCCCC;
 @bg_success: #B9F6CA;
 @bg_warning: #F4FF81;
@@ -31,6 +33,12 @@ body{
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
   border-radius: @radius;
+}
+
+.change-duration-animation(@duration){
+  -webkit-animation-duration: @duration;
+  -moz-animation-duration: @duration;
+  animation-duration: @duration;
 }
 
 nav{
@@ -138,6 +146,7 @@ nav{
 }
 
 #messageLogin{
+  .change-duration-animation(0.750s);
   position: relative;
   bottom: 0;
   margin-top: 250px;
@@ -421,6 +430,7 @@ footer {
 
 #changeServer{
   position: absolute;
+  z-index: 500;
   background-color: @back_transparent_strong;
   padding: 10px;
   top:10%;

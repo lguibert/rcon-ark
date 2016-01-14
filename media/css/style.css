@@ -1,3 +1,4 @@
+@import "spiner.css";
 html {
   background: no-repeat left top;
   background-size: 100%;
@@ -95,6 +96,9 @@ nav a:hover {
   color: white;
 }
 #messageLogin {
+  -webkit-animation-duration: 0.75s;
+  -moz-animation-duration: 0.75s;
+  animation-duration: 0.75s;
   position: relative;
   bottom: 0;
   margin-top: 250px;
@@ -378,6 +382,7 @@ footer {
 }
 #changeServer {
   position: absolute;
+  z-index: 500;
   background-color: rgba(255, 255, 255, 0.85);
   padding: 10px;
   top: 10%;

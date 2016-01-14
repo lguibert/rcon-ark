@@ -1,14 +1,22 @@
-<div id="main_myservers" class="container" ng-controller="ServersController">
+<div id="main_myservers" class="container animated fadeIn" ng-controller="ServersController">
     <h1>{{'MYSERVERS' | translate}} <i class="fa fa-plus-circle" ng-click="showChangeServer()"></i></h1>
 
+    <div class="spinner" ng-if="loading">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
 
-    <div id="servers">
+
+    <div id="servers" ng-if="!loading" class="animated fadeIn">
         <div class="server" ng-repeat="server in servers">
             <div class="top">
                 <i class="fa fa-pencil" ng-click="showChangeServer(server)"></i>
                 <i class="fa fa-minus-circle" ng-click="show_text('just tiny truc')"></i>
             </div>
-            <div class="infos" ng-click="show_text('All truc')">
+            <div class="infos" ng-click="connectToServer(server)">
                 <div class="info">
                     <h4>{{'SERVER_NAME' | translate}}</h4>
                     {{server.name}}

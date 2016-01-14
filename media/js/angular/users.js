@@ -52,13 +52,14 @@ app.controller('LoginController', function ($scope, $rootScope, AuthenticationSe
         credentials.password = String(CryptoJS.SHA256(credentials.password));
         AuthenticationService.Login(credentials, function(response){
             if(response.success){
+                $("#login").addClass('fadeOut');
                 AuthenticationService.SetCredentials(response.data[0], response.data[1], response.data[2]);
                 $rootScope.logged = true;
                 $rootScope.role = response.data[2];
                 $location.path('/myservers');
             }else{
                 $scope.messageLogin = true;
-                $("#messageLogin").html("<div class='error'>Problème lors de la connexion. Vérifier vos paramètres.</div>");
+                $("#messageLogin").html("<div class='error'>Problème lors de la connexion. Vérifier vos paramètres.</div>").addClass("shake2");
             }
         });
     };

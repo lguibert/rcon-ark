@@ -1,7 +1,7 @@
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when("/login", {templateUrl: 'templates/login.html'})
-        .when('/commands', {templateUrl: 'templates/commands.html', data: {role: ['admin']}})
+        .when('/commands', {templateUrl: 'templates/commands.html'})
         .when('/myservers/', {templateUrl: 'templates/myservers.html'})
 
         .otherwise({redirectTo: '/login'});
