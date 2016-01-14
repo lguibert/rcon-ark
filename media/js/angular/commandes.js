@@ -39,12 +39,6 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         return $scope.player_selected === player;
     };
 
-    $scope.check_user = function () {
-        if (!$scope.currentUser) {
-            $location.path("/login");
-        }
-    };
-
     $scope.get_online_players = function(){
        $scope.send_command("ListPlayers", "");
     };

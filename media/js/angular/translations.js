@@ -14,7 +14,7 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLEAR_RESULT': 'Clear results',
         'CHANGE_BACKGROUND_RANDOM': 'Change background randomly',
         'LOGOUT': 'Logout',
-        'LOGIN': 'Go',
+        'LOGIN': 'Login',
         'VALIDATION': 'Validation',
         'NAME': 'Name',
         'LOOKING_FOR_ITEM': 'Search for item...',
@@ -35,7 +35,13 @@ app.config(['$translateProvider', function ($translateProvider) {
         'SERVER_NAME': 'Server name',
         'SERVERNAME_REQUIRED': 'Server name required',
         'SERVER_ADDRESS': 'Server address',
-        'ADDRESS_REQUIRED': 'Server address is required'
+        'ADDRESS_REQUIRED': 'Server address is required',
+        'ERROR_CONNECTION_SERVER': 'Unreachable server. Maybe it is offline or check your settings.',
+        'CLICK_CONNECT': 'Click to connect.',
+        'CLICK_UPDATE': 'Click to update.',
+        'CLICK_DELETE': 'Click to delete.',
+        'NEW_USER': 'No account ? Create one !',
+        'CREATE_USER_TITLE': 'Account creation'
     });
 
     $translateProvider.translations('fr', {
@@ -53,7 +59,7 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLEAR_RESULT': 'Supprimer les résultats',
         'CHANGE_BACKGROUND_RANDOM': 'Changer le fond d\'écran (aléatoire)',
         'LOGOUT': 'Déconnexion',
-        'LOGIN': 'Go',
+        'LOGIN': 'Connexion',
         'VALIDATION': 'Valider',
         'NAME': 'Nom',
         'LOOKING_FOR_ITEM': 'Rechercher un item...',
@@ -74,7 +80,13 @@ app.config(['$translateProvider', function ($translateProvider) {
         'SERVER_NAME': 'Nom du serveur',
         'SERVERNAME_REQUIRED': 'Nom du serveur requis',
         'SERVER_ADDRESS': 'Adresse du serveur',
-        'ADDRESS_REQUIRED': 'L\'adresse du serveur est obligatoire'
+        'ADDRESS_REQUIRED': 'L\'adresse du serveur est obligatoire',
+        'ERROR_CONNECTION_SERVER': 'Le serveur ne répond pas. Il est peut être hors ligne ou vérifier vos paramètres.',
+        'CLICK_CONNECT': 'Cliquer pour vous connecter.',
+        'CLICK_UPDATE': 'Cliquer pour mettre à jour.',
+        'CLICK_DELETE': 'Cliquer pour supprimer.',
+        'NEW_USER': 'Pas de compte? Créer en un !',
+        'CREATE_USER_TITLE': 'Création d\'un compte'
     });
 
     $translateProvider.preferredLanguage('fr');

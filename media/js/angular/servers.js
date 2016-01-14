@@ -47,35 +47,57 @@ app.factory('ServersFactory', ['$http', '$q', function ($http, $q) {
                     deferred.reject(data);
                 });
             return deferred.promise;
+        },
+        deleteServer: function (goserver, username) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: server + 'myservers/delete/',
+                data: [goserver, username],
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function (data) {
+                    deferred.reject(data);
+                });
+            return deferred.promise;
         }
 
     };
 }]);
 
-app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'ServersFactory', '$location',
-    function ($scope, $rootScope, superCache, ServersFactory, $location) {
+app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'ServersFactory', '$location', '$filter',
+    function ($scope, $rootScope, superCache, ServersFactory, $location, $filter) {
         //var servers_cache = superCache.get('servers_cache');
         $scope.loading = true;
-        ServersFactory.getMyservers().then(function (data) {
-            //superCache.put('servers_cache', data);
-            $scope.loading = false;
-            $scope.servers = data;
-            $("#main_myservers").removeClass("animated");
-        }, function (msg) {
-            $scope.loading = false;
-            console.log("<==== Error ====>");
-        });
+        getMyServers();
 
-        $scope.show_text = function(text){
-            alert(text);
+        function getMyServers(){
+            ServersFactory.getMyservers().then(function (data) {
+                //superCache.put('servers_cache', data);
+                $scope.loading = false;
+                $scope.loading_update = false;
+                $scope.servers = data;
+                $("#main_myservers").removeClass("animated");
+            }, function (msg) {
+                $scope.loading = false;
+                $scope.loading_update = false;
+                console.log("<==== Error ====>");
+            });
         };
 
         $scope.connectToServer = function (server){
+            $scope.loading_update = true;
             ServersFactory.connectToServer(server, $rootScope.globals.currentUser.username).then(function () {
                 $rootScope.server = server;
+                $scope.loading_update = false;
                 $location.path('/commands');
             }, function (msg) {
-                console.log(msg);
+                $scope.loading_update = false;
+                MessageHandler.displayMessage({msg: $filter('translate')('ERROR_CONNECTION_SERVER')});
+                //$('#message').html("<div class='error'>"+$filter('translate')('ERROR_CONNECTION_SERVER')+"</div>").addClass("shake2");
             });
         };
 
@@ -92,14 +114,24 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
         };
 
         $scope.changeServer = function(server){
+            $scope.loading_update = true;
             ServersFactory.postServer(server, $rootScope.globals.currentUser.username).then(function (data) {
-                console.log("Before : ");
-                console.log(data);
-                console.log(" : After.");
+                getMyServers();
             }, function (msg) {
+                $scope.loading = false;
                 console.log(msg);
             });
         };
+
+        $scope.deleteServer = function(server){
+            $scope.loading_update = true;
+            ServersFactory.deleteServer(server, $rootScope.globals.currentUser.username).then(function (data) {
+                getMyServers();
+            }, function (msg) {
+                $scope.loading = false;
+                console.log(msg);
+            });
+        }
 
 
     }]);

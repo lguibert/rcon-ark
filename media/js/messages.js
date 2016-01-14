@@ -1,7 +1,7 @@
 /**
  * Created by Lucas on 12/05/2015.
- */
-function displayMessage(message, type){
+
+ function displayMessage(message, type){
     if (message == null){
         message = "Une erreur est survenue.";
     }
@@ -20,8 +20,19 @@ function displayMessage(message, type){
     },5000);
 }
 
-function refactorMessageContainer(target){
+ function refactorMessageContainer(target){
     setTimeout(function(){
         target.html('').removeClass();
     },700);
-}
+}*/
+
+MessageHandler = {
+    displayMessage: function (args) {
+        var selector = args.selector || "#message";
+        var msg = args.msg;
+        var animation = args.animate || "shake2";
+        var type = args.type || "error";
+
+        $(selector).html("<div class='"+type+"'>"+msg+"</div>").addClass(animation);
+    }
+};

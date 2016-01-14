@@ -6,6 +6,15 @@ html {
 body {
   background: none;
 }
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(2, 2, 2, 0.5);
+  text-align: center;
+  color: white;
+}
 nav a:hover {
   cursor: pointer;
 }
@@ -40,7 +49,7 @@ nav a:hover {
   max-height: 450px;
   overflow-y: auto;
   min-height: 250px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 #result-controllers {
   margin-top: 10px;
@@ -52,32 +61,29 @@ nav a:hover {
   width: 80px;
   display: inline-block;
 }
-#main_myservers {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-#main_myservers i:hover {
-  cursor: pointer;
-}
-#main_myservers i:active {
-  color: yellow;
-}
 #login {
   position: absolute;
   left: 35%;
   overflow: hidden;
   width: 480px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   padding-bottom: 20px;
 }
 #login form {
   height: 100%;
   width: 100%;
+  margin-bottom: 10px;
 }
 #login form button {
   margin-top: 20px;
 }
 #login form label {
   margin-top: 20px;
+}
+#login a {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
 }
 .message {
   padding: 15px;
@@ -168,14 +174,6 @@ nav a:hover {
   background-color: #F4FF81;
   border: solid 1px #F4FF81;
 }
-footer {
-  position: relative;
-  clear: both;
-  height: 50px;
-  text-align: center;
-  color: white;
-  margin-top: 1px;
-}
 .inputs-parent {
   text-align: center;
 }
@@ -208,7 +206,7 @@ footer {
   margin-right: 5px;
 }
 #main-command {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   padding-bottom: 20px;
   width: 60%;
 }
@@ -244,7 +242,7 @@ footer {
 }
 #players-container #items,
 #items-container #items {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .active {
   background-color: rgba(53, 220, 0, 0.8) !important;
@@ -344,7 +342,27 @@ footer {
 #languages ul li:active {
   background-color: #3c763d;
 }
+#main_myservers {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+#main_myservers .spinner > div {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+#main_myservers h1 {
+  float: left;
+}
+#main_myservers i:hover {
+  cursor: pointer;
+}
+#main_myservers i:active {
+  color: #2b542c;
+}
+#servers {
+  clear: both;
+}
 #servers .server {
+  position: relative;
+  z-index: 99;
   width: 150px;
   border: 1px solid #9d9d9d;
   -moz-border-radius: 5px;
@@ -360,25 +378,33 @@ footer {
 #servers .server:hover {
   cursor: pointer;
 }
+#servers .server:active {
+  background-color: #2b542c;
+}
 #servers .server h4 {
   font-size: 14px;
   margin: 0;
   text-decoration: underline;
 }
 #servers .server .infos {
-  margin-top: 5px;
+  margin-top: 20px;
 }
 #servers .server .infos .info {
   margin-bottom: 10px;
+}
+#servers .server .top {
+  position: absolute;
+  z-index: 100;
+  right: 5px;
 }
 #servers .server .top i {
   position: relative;
 }
 #servers .server .top i:first-child {
-  right: -50px;
+  right: 5px;
 }
 #servers .server .top i:last-child {
-  right: -55px;
+  right: 0;
 }
 #changeServer {
   position: absolute;
@@ -390,10 +416,15 @@ footer {
   display: none;
   width: 260px;
 }
-footer {
+#changeServer i {
+  font-size: 15px;
   position: absolute;
-  bottom: 0;
-  height: 50px;
-  width: 100%;
-  background-color: rgba(2, 2, 2, 0.5);
+  right: 5px;
+  top: 5px;
+}
+#changeServer #formServer {
+  margin-top: 10px;
+}
+#newUser {
+  background-color: rgba(255, 255, 255, 0.7);
 }

@@ -17,7 +17,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="navbar-left" ng-controller="ToolsController">
                     <a class="navbar-brand" ng-click="get_backgrounds_ramdom()">{{'CHANGE_BACKGROUND_RANDOM' | translate}}</a>
-                    <!--<a class="navbar-brand" href="#" ng-click="get_backgrounds()">Changer le fond d'écran</a>-->
+                    <a class="navbar-brand" href="#/myservers" ng-if="globals.currentUser">{{'MYSERVERS' | translate}}</a>
                 </div>
 
                 <div class="navbar-right" ng-controller="LoginController">
@@ -63,6 +63,7 @@
 <script src="media/js/angular/items.js"></script>
 <script src="media/js/angular/translations.js"></script>
 <script src="media/js/angular/servers.js"></script>
+<script src="media/js/messages.js"></script>
 <!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>-->
 <script src="media/js/sha.js"></script>
 </body>

@@ -3,6 +3,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when("/login", {templateUrl: 'templates/login.html'})
         .when('/commands', {templateUrl: 'templates/commands.html'})
         .when('/myservers/', {templateUrl: 'templates/myservers.html'})
+        .when('/newuser', {templateUrl: 'templates/newuser.html'})
 
         .otherwise({redirectTo: '/login'});
 }]);
@@ -19,10 +20,11 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScop
             $rootScope.role = $rootScope.globals.currentUser.role;
         }
 
-        var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
+        var restrictedPage = $.inArray($location.path(), ['/login', '/newuser']) === -1;
         var loggedIn = $rootScope.globals.currentUser;
 
         if (restrictedPage && !loggedIn) {
+            console.log("prout");
             $location.path('/login');
         }
 

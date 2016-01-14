@@ -12,8 +12,10 @@
 @size_result: 250px;
 @max_size: 200px;
 
-@back_transparent: rgba(255,255,255,0.5);
+@back_transparent: rgba(255,255,255,0.7);
 @back_transparent_strong: rgba(255,255,255,0.85);
+@back_black_transparent: rgba(0,0,0,0.6);
+@back_select_active: #2b542c;
 
 @nav_background: #222222;
 @nav_text_color: #9d9d9d;
@@ -27,6 +29,16 @@ html{
 
 body{
   background:none;
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(2,2,2,0.5);
+  text-align: center;
+  color: white;
 }
 
 .border-radius(@radius: 10px) {
@@ -97,17 +109,6 @@ nav{
   }
 }
 
-#main_myservers{
-  background-color: @back_transparent;
-  i:hover{
-    cursor: pointer;
-  }
-  i:active{
-    color:yellow;
-  }
-
-}
-
 #login{
   position: absolute;
   left:35%;
@@ -117,12 +118,18 @@ nav{
   padding-bottom: 20px;
   form{
     .fullsized;
+    margin-bottom: 10px;
     button{
       margin-top: 20px;
     }
     label{
       margin-top: 20px;
     }
+  }
+  a{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
   }
 }
 
@@ -206,15 +213,6 @@ nav{
   }
 }
 
-footer {
-  position: relative;
-  clear: both;
-  height: 50px;
-  text-align: center;
-  color: white;
-  margin-top: 1px;
-}
-
 .inputs-parent{
   text-align: center;
   .inputs{
@@ -293,7 +291,7 @@ footer {
 }
 
 #players-controller, #items-controller{
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: @back_black_transparent;
   cursor: pointer;
   height: @controller_height;
   img{
@@ -388,19 +386,43 @@ footer {
   }
 }
 
+#main_myservers{
+  background-color: @back_transparent;
+  .spinner{
+    & > div{
+      background-color: @back_black_transparent;
+    }
+  }
+  h1{
+    float: left;
+  }
+  i:hover{
+    cursor: pointer;
+  }
+  i:active{
+    color:@back_select_active;
+  }
+}
+
 #servers{
+  clear: both;
   .server{
+    position: relative;
+    z-index: 99;
     width: 150px;
     border:1px solid @nav_text_color;
     .border-radius(5px);
     padding: 0 10px 0 10px;
     margin: 10px;
     display: inline-block;
-    background-color: rgba(0,0,0,0.6);
+    background-color: @back_black_transparent;
     color:white;
     text-align: center;
     &:hover{
       cursor: pointer;
+    }
+    &:active{
+      background-color: @back_select_active;
     }
     h4{
       font-size: 14px;
@@ -408,21 +430,23 @@ footer {
       text-decoration: underline;
     }
     .infos{
-      margin-top: 5px;
+      margin-top: 20px;
       .info{
         margin-bottom: 10px;
       }
     }
     .top{
+      position: absolute;
+      z-index: 100;
+      right: 5px;
       i{
         position: relative;
         &:first-child{
-          right: -50px;
+          right: 5px;
         }
         &:last-child{
-          right: -55px;
+          right: 0;
         }
-
       }
     }
   }
@@ -437,16 +461,18 @@ footer {
   left:45%;
   display: none;
   width:260px;
+  i{
+    font-size: 15px;
+    position: absolute;
+    right: 5px;
+    top:5px;
+  }
+  #formServer{
+    margin-top: 10px;
+  }
 }
 
 
-
-footer{
-  position: absolute;
-  bottom: 0;
-  height: 50px;
-  width: 100%;
-  background-color: rgba(2,2,2,0.5);
+#newUser{
+  background-color: @back_transparent;
 }
-
-

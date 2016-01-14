@@ -1,7 +1,9 @@
 <div id="main_myservers" class="container animated fadeIn" ng-controller="ServersController">
+    <div id="message" class="animated"></div>
+
     <h1>{{'MYSERVERS' | translate}} <i class="fa fa-plus-circle" ng-click="showChangeServer()"></i></h1>
 
-    <div class="spinner" ng-if="loading">
+    <div class="spinner" ng-if="loading == true || loading_update == true">
         <div class="rect1"></div>
         <div class="rect2"></div>
         <div class="rect3"></div>
@@ -11,10 +13,10 @@
 
 
     <div id="servers" ng-if="!loading" class="animated fadeIn">
-        <div class="server" ng-repeat="server in servers">
+        <div class="server" ng-repeat="server in servers" title="{{'CLICK_CONNECT' | translate}}">
             <div class="top">
-                <i class="fa fa-pencil" ng-click="showChangeServer(server)"></i>
-                <i class="fa fa-minus-circle" ng-click="show_text('just tiny truc')"></i>
+                <i class="fa fa-pencil" ng-click="showChangeServer(server)" title="{{'CLICK_UPDATE' | translate}}"></i>
+                <i class="fa fa-minus-circle" ng-click="deleteServer(server)" title="{{'CLICK_DELETE' | translate}}"></i>
             </div>
             <div class="infos" ng-click="connectToServer(server)">
                 <div class="info">
