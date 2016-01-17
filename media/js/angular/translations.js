@@ -41,7 +41,9 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLICK_UPDATE': 'Click to update.',
         'CLICK_DELETE': 'Click to delete.',
         'NEW_USER': 'No account ? Create one !',
-        'CREATE_USER_TITLE': 'Account creation'
+        'CREATE_USER_TITLE': 'Account creation',
+        'CLICK_BLUEPRINT': 'Click to copie to clipboard the blueprint path of this item.',
+        'CLICK_BLUEPRINT_TEXT': 'Click'
     });
 
     $translateProvider.translations('fr', {
@@ -86,7 +88,9 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLICK_UPDATE': 'Cliquer pour mettre à jour.',
         'CLICK_DELETE': 'Cliquer pour supprimer.',
         'NEW_USER': 'Pas de compte? Créer en un !',
-        'CREATE_USER_TITLE': 'Création d\'un compte'
+        'CREATE_USER_TITLE': 'Création d\'un compte',
+        'CLICK_BLUEPRINT': 'Cliquer pour copier le blueprint de l\'item.',
+        'CLICK_BLUEPRINT_TEXT': 'Cliquer'
     });
 
     $translateProvider.preferredLanguage('fr');

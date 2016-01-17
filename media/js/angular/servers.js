@@ -68,8 +68,8 @@ app.factory('ServersFactory', ['$http', '$q', function ($http, $q) {
     };
 }]);
 
-app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'ServersFactory', '$location', '$filter',
-    function ($scope, $rootScope, superCache, ServersFactory, $location, $filter) {
+app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'ServersFactory', '$location', '$filter', 'CurrentServer',
+    function ($scope, $rootScope, superCache, ServersFactory, $location, $filter, CurrentServer) {
         //var servers_cache = superCache.get('servers_cache');
         $scope.loading = true;
         getMyServers();
@@ -91,7 +91,7 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
         $scope.connectToServer = function (server){
             $scope.loading_update = true;
             ServersFactory.connectToServer(server, $rootScope.globals.currentUser.username).then(function () {
-                $rootScope.server = server;
+                CurrentServer.setCurrentServer(server);
                 $scope.loading_update = false;
                 $location.path('/commands');
             }, function (msg) {

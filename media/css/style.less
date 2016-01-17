@@ -211,6 +211,11 @@ nav{
     .border-radius;
     .commands(@bg_warning);
   }
+  .spinner{
+    position: absolute;
+    top:20px;
+    left:390px;
+  }
 }
 
 .inputs-parent{
@@ -243,25 +248,28 @@ nav{
 
 #players-container{
   padding:0;
+  margin-left: 10px;
 }
 
 #items-container{
   padding:0;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 #main-command{
   background-color: @back_transparent;
   padding-bottom: 20px;
-  width: 60%;
+  width: 68%;
+  overflow: hidden;
 }
 
 #players-container, #items-container{
-  height: 85vh;
+  min-height: 85vh;
+  max-height: 85vh;
   width: 15%;
   //position: absolute;
   //top:60px;
-  //background-color: @back_transparent;
+  background-color: @back_transparent;
   overflow-y: auto;
   text-align: center;
   .players{
@@ -283,6 +291,20 @@ nav{
   }
   #items{
     background-color: @back_transparent;
+    .copielink{
+      &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+#loading_item, #loading_player{
+  .spinner{
+    position: absolute;
+    top:45%;
+    left:43%;
   }
 }
 
@@ -314,6 +336,15 @@ nav{
   }
 }
 
+#loading_player_top{
+  .spinner{
+    position: absolute;
+    top:-5px;
+    left:10px;
+    z-index: 999;
+  }
+}
+
 #table-items{
   &{
     width: 100%;
@@ -326,6 +357,7 @@ nav{
     }
     &.lighter{
       background-color: rgb(72, 72, 72);
+      color:white;
     }
   }
   td{

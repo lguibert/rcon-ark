@@ -45,13 +45,13 @@ app.controller('ToolsController', ['$scope', '$rootScope', 'superCache', 'ToolsF
             setBackground(data);
         }
 
-        $("html").css("background-image", "url('media/img/backgrounds/" + data[index] + "')");
+        $("html").css("background-image", "url('media/img/backgrounds/" + data[index] + "')").css("background-repeat", "repeat-y");
         $scope.last_background = index;
-    }
+    };
 
     function generateIndex(data) {
         return Math.floor((Math.random() * data.length));
-    }
+    };
 }]);
 
 app.service('SelectedProperties', function () {
@@ -74,6 +74,19 @@ app.service('SelectedProperties', function () {
     };
 });
 
+app.service('CurrentServer', function(){
+    var currentServer = {};
+
+    return {
+        getCurrentServer: function () {
+            return currentServer;
+        },
+        setCurrentServer: function (value) {
+            currentServer = value;
+        }
+    };
+});
+
 app.filter('customSearch', function () {
     return function (input, search) {
         if (!input) return input;
@@ -81,7 +94,12 @@ app.filter('customSearch', function () {
         var expected = ('' + search).toLowerCase();
         var result = {};
         angular.forEach(input, function (value, key) {
-            var actual = ('' + value.name).toLowerCase();
+            if(value.name != null){
+                var actual = ('' + value.name).toLowerCase();
+            }else{
+                var actual = ('' + value.playername).toLowerCase();
+            }
+
             if (actual.indexOf(expected) !== -1) {
                 result[key] = value;
             }

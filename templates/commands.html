@@ -1,6 +1,7 @@
 <div id="commands-root" ng-controller="CommandesController" class="col-xs-12 col-lg-12 col-md-12">
-    <div id="items-container" ng-controller="ItemsController" class="col-xs-2 col-lg-2 col-md-2">
-        <div id="items-controller" >
+    <div id="items-container" ng-controller="ItemsController" class="col-xs-2 col-lg-2 col-md-2"
+         ng-init="create_list_items()">
+        <div id="items-controller">
             <div class="refresh" ng-click="create_list_items()" title="{{'RELOAD_LIST_ITEM' | translate}}">
                 <img src="media/img/refresh.png">
             </div>
@@ -9,12 +10,24 @@
             </div>
         </div>
         <div id="items" class="items">
-            <table id="table-items">
+            <div id="loading_item" ng-if="loading_item">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+            <table id="table-items" ng-if="!loading_item">
                 <tr ng-repeat="item in items | customSearch:searchedItem"
-                    ng-class="{darker: $index % 2 == 0, lighter: $index % 2 != 0, active: is_selected(item)}"
-                    ng-click="set_selected(item)">
+                    ng-class="{darker: $index % 2 == 0, lighter: $index % 2 != 0}">
                     <td><img src="{{item.icone}}"/></td>
-                    <td>{{item.id}}</td>
+                    <td ng-if="item.id != ' No ID'">{{item.id}}</td>
+                    <td ng-if="item.id == ' No ID'" class="copielink" clipboard text="item.blueprint"
+                        on-copied="copieSuccess()" title="{{'CLICK_BLUEPRINT' | translate}}">{{'CLICK_BLUEPRINT_TEXT' |
+                        translate}}
+                    </td>
                     <td>{{item.name}}</td>
                 </tr>
             </table>
@@ -23,6 +36,14 @@
     <div id="main-command" class="col-xs-7 col-lg-7 col-md-7">
         <div id="contain-commands">
             <h1>{{'TITLE_COMMAND' | translate}}</h1>
+
+            <div class="spinner" ng-if="loading_command && !auto_reload">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
 
             <div id="commands">
                 <div class="col-xs-12 col-lg-12 col-md-12 easy_commands">
@@ -85,31 +106,42 @@
                 </div>
             </div>
         </div>
-        <div  id="result" ng-controller="MainController">
+        <div id="result">
             <div id="result-results"></div>
-            <div class="loading" ng-show="loading">
-                <div id="loading">
-                    <img src="media/img/loader.gif"/>
-                    <span>{{'LOADING' | translate}}...</span>
-                </div>
-            </div>
         </div>
-        <div  id="result-controllers">
-        <button class="btn btn-warning" ng-click="clear_result()">{{'CLEAR_RESULT' | translate}}</button>
+        <div id="result-controllers">
+            <button class="btn btn-warning" ng-click="clear_result()">{{'CLEAR_RESULT' | translate}}</button>
+        </div>
     </div>
-    </div>
-    <div id="players-container" class="col-xs-2 col-lg-2 col-md-2">
+    <div id="players-container" class="col-xs-2 col-lg-2 col-md-2" ng-init="get_online_players()">
         <div id="players-controller">
             <div class="refresh" ng-click="get_online_players()" title="{{'RELOAD_LIST_PLAYER' | translate}}">
-                <img src="media/img/refresh.png">
+                <div id="loading_player_top" ng-if="loading_player && auto_reload">
+                    <div class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
+                </div>
+                <img src="media/img/refresh.png" ng-if="!loading_player">
             </div>
             <div class="search">
-                <input type="text" placeholder="{{'LOOKING_FOR_PLAYER' | translate}}" ng-model="searched_player"
-                       ng-change=""/>
+                <input type="text" placeholder="{{'LOOKING_FOR_PLAYER' | translate}}" ng-model="searchedPlayer"/>
+            </div>
+        </div>
+        <div id="loading_player" ng-if="loading_player && !auto_reload">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
             </div>
         </div>
         <div class="players-all">
-            <div ng-show="online_players.length > 0" ng-repeat="player in online_players track by $index"
+            <div ng-show="online_players.length > 0" ng-repeat="player in online_players | customSearch:searchedPlayer"
                  class="players" ng-class="{active: is_selected(player)}"
                  ng-click="set_selected(player)">
 

@@ -17,16 +17,21 @@ app.factory('ItemsFactory', ['$http', '$q', function ($http, $q) {
 app.controller('ItemsController', ['$scope', '$rootScope', 'superCache', 'ItemsFactory', 'SelectedProperties',
     function ($scope, $rootScope, superCache, ItemsFactory, SelectedProperties) {
         var items_cache = superCache.get('items_cache');
+        $scope.loading_item = false;
 
         $scope.create_list_items = function () {
+            $scope.loading_item = true;
             if (!items_cache) {
                 ItemsFactory.getItems().then(function (data) {
                     superCache.put('items_cache', data);
                     $scope.items = data;
+                    $scope.loading_item = false;
                 }, function (msg) {
+                    $scope.loading_item = false;
                     console.log("<==== Error ====>");
                 });
             } else {
+                $scope.loading_item = false;
                 $scope.items = items_cache;
             }
         };
