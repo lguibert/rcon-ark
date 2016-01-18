@@ -43,7 +43,10 @@ app.config(['$translateProvider', function ($translateProvider) {
         'NEW_USER': 'No account ? Create one !',
         'CREATE_USER_TITLE': 'Account creation',
         'CLICK_BLUEPRINT': 'Click to copie to clipboard the blueprint path of this item.',
-        'CLICK_BLUEPRINT_TEXT': 'Click'
+        'CLICK_BLUEPRINT_TEXT': 'Click',
+        'ABOUTUS_TITLE': 'About us',
+        'CONTACT_TITLE': 'Contact',
+        'HOMEWEBSITE': ''
     });
 
     $translateProvider.translations('fr', {
@@ -90,7 +93,9 @@ app.config(['$translateProvider', function ($translateProvider) {
         'NEW_USER': 'Pas de compte? Créer en un !',
         'CREATE_USER_TITLE': 'Création d\'un compte',
         'CLICK_BLUEPRINT': 'Cliquer pour copier le blueprint de l\'item.',
-        'CLICK_BLUEPRINT_TEXT': 'Cliquer'
+        'CLICK_BLUEPRINT_TEXT': 'Cliquer',
+        'ABOUTUS_TITLE': 'A propos',
+        'CONTACT_TITLE': 'Contact'
     });
 
     $translateProvider.preferredLanguage('fr');
