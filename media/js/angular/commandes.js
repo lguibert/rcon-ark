@@ -19,8 +19,8 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
     };
 }]);
 
-app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', '$location', 'SelectedProperties', 'CurrentServer', '$interval',
-    function ($scope, $rootScope, superCache, CommandesFactory, $location, SelectedProperties, CurrentServer, $interval) {
+app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'CommandesFactory', '$location', 'SelectedProperties', '$window', '$interval',
+    function ($scope, $rootScope, superCache, CommandesFactory, $location, SelectedProperties, $window, $interval) {
         var success_class = "success";
         var error_class = "error";
 
@@ -30,10 +30,10 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         }
         ];
 
-        $interval(function(){
+        /*$interval(function(){
             $scope.auto_reload = true;
             $scope.get_online_players(false);
-        }, 5000);
+        }, 5000);*/
 
         $scope.set_selected = function (player) {
             SelectedProperties.setPlayerSelected(player);
@@ -67,7 +67,8 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
             }
             catch (e) {
             }
-            CommandesFactory.sendCommand(cmd, attrs, CurrentServer.getCurrentServer()).then(function (data) {
+            console.log("TEST: " + $window.sessionStorage.currentServer);
+            CommandesFactory.sendCommand(cmd, attrs, $window.sessionStorage.currentServer).then(function (data) {
                 //$rootScope.load(false);
                 $scope.loading_command = false;
                 $scope.loading_player = false;

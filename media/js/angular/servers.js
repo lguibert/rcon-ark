@@ -68,14 +68,14 @@ app.factory('ServersFactory', ['$http', '$q', function ($http, $q) {
     };
 }]);
 
-app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'ServersFactory', '$location', '$filter', 'CurrentServer',
-    function ($scope, $rootScope, superCache, ServersFactory, $location, $filter, CurrentServer) {
+app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'ServersFactory', '$location', '$filter', '$window',
+    function ($scope, $rootScope, superCache, ServersFactory, $location, $filter, $window) {
         //var servers_cache = superCache.get('servers_cache');
         $scope.loading = true;
         getMyServers();
 
         function getMyServers(){
-            ServersFactory.getMyservers().then(function (data) {
+            ServersFactory.getMyservers($rootScope.globals.currentUser.username).then(function (data) {
                 //superCache.put('servers_cache', data);
                 $scope.loading = false;
                 $scope.loading_update = false;
@@ -90,9 +90,10 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
 
         $scope.connectToServer = function (server){
             $scope.loading_update = true;
-            ServersFactory.connectToServer(server, $rootScope.globals.currentUser.username).then(function () {
-                CurrentServer.setCurrentServer(server);
+            ServersFactory.connectToServer(server, $rootScope.globals.currentUser.username).then(function (uuid) {
+                //CurrentServer.setCurrentServer(uuid);
                 $scope.loading_update = false;
+                $window.sessionStorage.currentServer = uuid;
                 $location.path('/commands');
             }, function (msg) {
                 $scope.loading_update = false;
