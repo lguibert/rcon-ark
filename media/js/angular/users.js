@@ -53,7 +53,7 @@ app.controller('LoginController', function ($scope, $rootScope, AuthenticationSe
         AuthenticationService.Login(credentials, function(response){
             if(response.success){
                 $("#login").addClass('fadeOut');
-                AuthenticationService.SetCredentials(response.data[0], response.data[1], response.data[2]);
+                AuthenticationService.SetCredentials(response.data[0], response.data[1], response.data[2], response.data[3]);
                 $rootScope.logged = true;
                 $rootScope.role = response.data[2];
                 $location.path('/myservers');

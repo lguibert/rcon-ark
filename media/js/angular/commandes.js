@@ -67,7 +67,6 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
             }
             catch (e) {
             }
-            console.log("TEST: " + $window.sessionStorage.currentServer);
             CommandesFactory.sendCommand(cmd, attrs, $window.sessionStorage.currentServer).then(function (data) {
                 //$rootScope.load(false);
                 $scope.loading_command = false;
@@ -82,13 +81,14 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
                     }
                 }
                 catch (e) {
+                    console.log(data);
                     $rootScope.print_result(data, success_class);
                 }
             }, function (msg) {
                 //$rootScope.load(false);
                 $scope.loading_command = false;
                 $scope.loading_player = false;
-                $rootScope.print_result("Error inconnue", error_class);
+                $rootScope.print_result("Erreur inconnue", error_class);
             });
         };
 

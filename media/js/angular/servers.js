@@ -1,11 +1,11 @@
 app.factory('ServersFactory', ['$http', '$q', function ($http, $q) {
     return {
-        getMyservers: function (username) {
+        getMyservers: function (id) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
                 url: server + 'myservers/',
-                data: username,
+                data: id,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .success(function (data) {
@@ -16,12 +16,12 @@ app.factory('ServersFactory', ['$http', '$q', function ($http, $q) {
                 });
             return deferred.promise;
         },
-        postServer: function (newserver, username) {
+        postServer: function (newserver, id) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
                 url: server + 'myservers/change/',
-                data: [newserver, username],
+                data: [newserver, id],
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .success(function (data) {
@@ -32,12 +32,12 @@ app.factory('ServersFactory', ['$http', '$q', function ($http, $q) {
                 });
             return deferred.promise;
         },
-        connectToServer: function (goserver, username) {
+        connectToServer: function (goserver, id) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
                 url: server + 'myservers/connect/',
-                data: [goserver, username],
+                data: [goserver, id],
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .success(function (data) {
@@ -48,12 +48,12 @@ app.factory('ServersFactory', ['$http', '$q', function ($http, $q) {
                 });
             return deferred.promise;
         },
-        deleteServer: function (goserver, username) {
+        deleteServer: function (goserver, id) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
                 url: server + 'myservers/delete/',
-                data: [goserver, username],
+                data: [goserver, id],
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .success(function (data) {
@@ -75,7 +75,7 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
         getMyServers();
 
         function getMyServers(){
-            ServersFactory.getMyservers($rootScope.globals.currentUser.username).then(function (data) {
+            ServersFactory.getMyservers($rootScope.globals.currentUser.id).then(function (data) {
                 //superCache.put('servers_cache', data);
                 $scope.loading = false;
                 $scope.loading_update = false;
@@ -90,7 +90,7 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
 
         $scope.connectToServer = function (server){
             $scope.loading_update = true;
-            ServersFactory.connectToServer(server, $rootScope.globals.currentUser.username).then(function (uuid) {
+            ServersFactory.connectToServer(server, $rootScope.globals.currentUser.id).then(function (uuid) {
                 //CurrentServer.setCurrentServer(uuid);
                 $scope.loading_update = false;
                 $window.sessionStorage.currentServer = uuid;
@@ -116,7 +116,7 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
 
         $scope.changeServer = function(server){
             $scope.loading_update = true;
-            ServersFactory.postServer(server, $rootScope.globals.currentUser.username).then(function (data) {
+            ServersFactory.postServer(server, $rootScope.globals.currentUser.id).then(function (data) {
                 getMyServers();
             }, function (msg) {
                 $scope.loading = false;
@@ -126,7 +126,7 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
 
         $scope.deleteServer = function(server){
             $scope.loading_update = true;
-            ServersFactory.deleteServer(server, $rootScope.globals.currentUser.username).then(function (data) {
+            ServersFactory.deleteServer(server, $rootScope.globals.currentUser.id).then(function (data) {
                 getMyServers();
             }, function (msg) {
                 $scope.loading = false;

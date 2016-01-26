@@ -46,7 +46,8 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLICK_BLUEPRINT_TEXT': 'Click',
         'ABOUTUS_TITLE': 'About us',
         'CONTACT_TITLE': 'Contact',
-        'HOMEWEBSITE': ''
+        'HOMEWEBSITE': '',
+        'GET_GAMELOG': 'Get game log'
     });
 
     $translateProvider.translations('fr', {
@@ -90,12 +91,13 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLICK_CONNECT': 'Cliquer pour vous connecter.',
         'CLICK_UPDATE': 'Cliquer pour mettre à jour.',
         'CLICK_DELETE': 'Cliquer pour supprimer.',
-        'NEW_USER': 'Pas de compte? Créer en un !',
+        'NEW_USER': 'Pas de compte? Créez-en un !',
         'CREATE_USER_TITLE': 'Création d\'un compte',
         'CLICK_BLUEPRINT': 'Cliquer pour copier le blueprint de l\'item.',
         'CLICK_BLUEPRINT_TEXT': 'Cliquer',
         'ABOUTUS_TITLE': 'A propos',
-        'CONTACT_TITLE': 'Contact'
+        'CONTACT_TITLE': 'Contact',
+        'GET_GAMELOG': 'Voir le log'
     });
 
     $translateProvider.preferredLanguage('fr');

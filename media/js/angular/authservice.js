@@ -24,14 +24,15 @@ function AuthenticationService($http, $cookieStore, $rootScope) {
         });
     }
 
-    function SetCredentials(username, password, role) {
+    function SetCredentials(username, password, role, id) {
         var authdata = Base64.encode(username + ':' + password);
 
         $rootScope.globals = {
             currentUser: {
                 username: username,
                 role: role,
-                authdata: authdata
+                authdata: authdata,
+                id: id
             }
         };
 
