@@ -39,6 +39,11 @@ footer{
   background-color: rgba(2,2,2,0.5);
   text-align: center;
   color: white;
+  ul{
+    li{
+      list-style: none;
+    }
+  }
 }
 
 .border-radius(@radius: 10px) {
@@ -427,6 +432,19 @@ nav{
   }
   h1{
     float: left;
+    span{
+      font-size: 20px;
+      position: relative;
+      top:-5px;
+      left:15px;
+      i{
+        position: relative;
+        left:-10px;
+        -moz-animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+      }
+    }
   }
   i:hover{
     cursor: pointer;

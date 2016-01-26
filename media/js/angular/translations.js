@@ -46,8 +46,9 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLICK_BLUEPRINT_TEXT': 'Click',
         'ABOUTUS_TITLE': 'About us',
         'CONTACT_TITLE': 'Contact',
-        'HOMEWEBSITE': '',
-        'GET_GAMELOG': 'Get game log'
+        'HOMEWEBSITE': 'Home website',
+        'GET_GAMELOG': 'Get game log',
+        'NO_SERVER_ADD_ONE': 'You do not have any server yet, add one here!'
     });
 
     $translateProvider.translations('fr', {
@@ -97,7 +98,9 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CLICK_BLUEPRINT_TEXT': 'Cliquer',
         'ABOUTUS_TITLE': 'A propos',
         'CONTACT_TITLE': 'Contact',
-        'GET_GAMELOG': 'Voir le log'
+        'HOMEWEBSITE': 'Site général',
+        'GET_GAMELOG': 'Voir le log',
+        'NO_SERVER_ADD_ONE': 'Vous n\'avez encore pas de server, ajoutez-en un ici!'
     });
 
     $translateProvider.preferredLanguage('fr');

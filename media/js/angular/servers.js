@@ -74,12 +74,13 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
         $scope.loading = true;
         getMyServers();
 
-        function getMyServers(){
+        function getMyServers() {
             ServersFactory.getMyservers($rootScope.globals.currentUser.id).then(function (data) {
                 //superCache.put('servers_cache', data);
                 $scope.loading = false;
                 $scope.loading_update = false;
                 $scope.servers = data;
+                console.log(data);
                 $("#main_myservers").removeClass("animated");
             }, function (msg) {
                 $scope.loading = false;
@@ -88,10 +89,11 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
             });
         };
 
-        $scope.connectToServer = function (server){
+        $scope.connectToServer = function (server) {
             $scope.loading_update = true;
             ServersFactory.connectToServer(server, $rootScope.globals.currentUser.id).then(function (uuid) {
                 //CurrentServer.setCurrentServer(uuid);
+                console.log(uuid);
                 $scope.loading_update = false;
                 $window.sessionStorage.currentServer = uuid;
                 $location.path('/commands');
@@ -102,21 +104,30 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
             });
         };
 
-        $scope.showChangeServer = function(server){
-            if(server){
+        $scope.showChangeServer = function (server) {
+            if (server) {
                 $scope.server = server;
             }
             var div = $("#changeServer");
-            if(div.is(":visible")){
+            if (div.is(":visible")) {
+                resetFormChangeServer();
                 div.removeClass("slideInDown").addClass("slideOutUp").delay(700).hide(0);
-            }else{
+            } else {
                 div.removeClass("slideOutUp").addClass("slideInDown").show();
             }
         };
 
-        $scope.changeServer = function(server){
+        function resetFormChangeServer() {
+            $scope.server = null;
+            $scope.formServer.$setUntouched();
+            $scope.formServer.$setPristine();
+        }
+
+        $scope.changeServer = function (server) {
             $scope.loading_update = true;
             ServersFactory.postServer(server, $rootScope.globals.currentUser.id).then(function (data) {
+                $scope.showChangeServer();
+                resetFormChangeServer();
                 getMyServers();
             }, function (msg) {
                 $scope.loading = false;
@@ -124,7 +135,7 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
             });
         };
 
-        $scope.deleteServer = function(server){
+        $scope.deleteServer = function (server) {
             $scope.loading_update = true;
             ServersFactory.deleteServer(server, $rootScope.globals.currentUser.id).then(function (data) {
                 getMyServers();
@@ -133,6 +144,4 @@ app.controller('ServersController', ['$scope', '$rootScope', 'superCache', 'Serv
                 console.log(msg);
             });
         }
-
-
     }]);

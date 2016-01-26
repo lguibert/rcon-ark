@@ -15,6 +15,9 @@ footer {
   text-align: center;
   color: white;
 }
+footer ul li {
+  list-style: none;
+}
 nav a:hover {
   cursor: pointer;
 }
@@ -377,6 +380,19 @@ nav a:hover {
 }
 #main_myservers h1 {
   float: left;
+}
+#main_myservers h1 span {
+  font-size: 20px;
+  position: relative;
+  top: -5px;
+  left: 15px;
+}
+#main_myservers h1 span i {
+  position: relative;
+  left: -10px;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 #main_myservers i:hover {
   cursor: pointer;

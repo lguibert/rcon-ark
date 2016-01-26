@@ -1,7 +1,7 @@
 <div id="main_myservers" class="container animated fadeIn" ng-controller="ServersController">
     <div id="message" class="animated"></div>
 
-    <h1>{{'MYSERVERS' | translate}} <i class="fa fa-plus-circle" ng-click="showChangeServer()"></i></h1>
+    <h1>{{'MYSERVERS' | translate}} <i class="fa fa-plus-circle" ng-click="showChangeServer()"></i> <span ng-hide="servers.length > 0"><i class="fa fa-arrow-left animated shake2"></i> {{"NO_SERVER_ADD_ONE" | translate}}</span></h1>
 
     <div class="spinner" ng-if="loading == true || loading_update == true">
         <div class="rect1"></div>
