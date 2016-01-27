@@ -108,6 +108,21 @@ app.filter('customSearch', function () {
     }
 });
 
+app.filter('toTimer', function () {
+    return function (value) {
+        var duration = moment().startOf('day').add("s", value),
+            format = "";
+
+        if(duration.hour() > 0){ format += "HH[h ]"; }
+
+        if(duration.minute() > 0){ format += "mm[m ]"; }
+
+        format += "ss[s]";
+
+        return duration.format(format);
+    }
+});
+
 app.directive('ngConfirmClick', [
     function () {
         return {

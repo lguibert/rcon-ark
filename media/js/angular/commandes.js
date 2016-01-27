@@ -17,24 +17,28 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
             return deferred.promise;
         },
         getInfoSupPlayers: function () {
-           /* $.ajax("http://api.tpdo.fr/ark-server/api/list_players").done(function (infos) {
-                return infos;
-            }).fail(function (msg) {
-                return("Erreur");
-            });*/
+            /* $.ajax("http://api.tpdo.fr/ark-server/api/list_players").done(function (infos) {
+             return infos;
+             }).fail(function (msg) {
+             return("Erreur");
+             });*/
             var deferred = $q.defer();
-            $http({
-                method: 'GET',
-                url: "http://api.tpdo.fr/ark-server/api/list_players",
-                data: date,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-                .success(function (data) {
-                    deferred.resolve(data);
-                })
-                .error(function (data) {
-                    deferred.reject(data);
-                });
+            $.getJSON("http://api.tpdo.fr/ark-server/api/list_players", function (data) {
+                deferred.resolve(data);
+            }).fail(function () {
+                deferred.reject(data);
+            });
+            /*$http({
+             method: 'JSONP',
+             url: "http://api.tpdo.fr/ark-server/api/list_players",
+             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+             })
+             .success(function (data) {
+             deferred.resolve(data);
+             })
+             .error(function (data) {
+             deferred.reject(data);
+             });*/
             return deferred.promise;
         }
     };
@@ -51,10 +55,11 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         }
         ];
 
-        /*$interval(function(){
-         $scope.auto_reload = true;
-         $scope.get_online_players(false);
-         }, 5000);*/
+        $interval(function () {
+            CommandesFactory.getInfoSupPlayers().then(function (infos) {
+                $scope.online_players_info = infos
+            });
+        }, 5000);
 
         $scope.set_selected = function (player) {
             SelectedProperties.setPlayerSelected(player);
@@ -99,7 +104,7 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
                     CommandesFactory.getInfoSupPlayers().then(function (infos) {
                         $scope.online_players_info = infos;
                         $scope.online_players = data[1];
-                    },function(){
+                    }, function () {
                         $scope.online_players = data[1];
                     });
                 }
@@ -143,4 +148,6 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         $scope.clear_result = function () {
             angular.element("#result-results").html("");
         }
-    }]);
+    }
+])
+;

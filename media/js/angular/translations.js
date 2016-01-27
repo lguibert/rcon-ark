@@ -48,7 +48,8 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CONTACT_TITLE': 'Contact',
         'HOMEWEBSITE': 'Home website',
         'GET_GAMELOG': 'Get game log',
-        'NO_SERVER_ADD_ONE': 'You do not have any server yet, add one here!'
+        'NO_SERVER_ADD_ONE': 'You do not have any server yet, add one here!',
+        'ONLINE_FOR': 'Online for'
     });
 
     $translateProvider.translations('fr', {
@@ -100,7 +101,8 @@ app.config(['$translateProvider', function ($translateProvider) {
         'CONTACT_TITLE': 'Contact',
         'HOMEWEBSITE': 'Site général',
         'GET_GAMELOG': 'Voir le log',
-        'NO_SERVER_ADD_ONE': 'Vous n\'avez encore pas de server, ajoutez-en un ici!'
+        'NO_SERVER_ADD_ONE': 'Vous n\'avez encore pas de server, ajoutez-en un ici!',
+        'ONLINE_FOR': 'En ligne depuis'
     });
 
     $translateProvider.preferredLanguage('fr');

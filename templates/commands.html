@@ -142,8 +142,7 @@
         </div>
         <div class="players-all">
             <div ng-show="online_players.length > 0" ng-repeat="player in online_players | customSearch:searchedPlayer"
-                 class="players" ng-class="{active: is_selected(player)}"
-                 ng-click="set_selected(player)">
+                 class="players" ng-class="{active: is_selected(player)}">
 
                 <div class="players-data">
                     <div class="player-data">
@@ -153,6 +152,10 @@
                     <div class="player-data">
                         <span>Steam ID: </span>
                         {{player.steamid}}
+                    </div>
+                    <div class="player-data">
+                        <span>{{'ONLINE_FOR' | translate}} </span>
+                        <b>{{online_players_info[player.playername].connect_time | toTimer}}<b/>
                     </div>
                     <!--<div class="player-data">
                         <span>Num chelou: </span>
