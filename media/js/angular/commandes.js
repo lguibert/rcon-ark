@@ -15,6 +15,27 @@ app.factory('CommandesFactory', ['$http', '$q', function ($http, $q) {
                     deferred.reject(msg);
                 });
             return deferred.promise;
+        },
+        getInfoSupPlayers: function () {
+           /* $.ajax("http://api.tpdo.fr/ark-server/api/list_players").done(function (infos) {
+                return infos;
+            }).fail(function (msg) {
+                return("Erreur");
+            });*/
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: "http://api.tpdo.fr/ark-server/api/list_players",
+                data: date,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function (data) {
+                    deferred.reject(data);
+                });
+            return deferred.promise;
         }
     };
 }]);
@@ -31,9 +52,9 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         ];
 
         /*$interval(function(){
-            $scope.auto_reload = true;
-            $scope.get_online_players(false);
-        }, 5000);*/
+         $scope.auto_reload = true;
+         $scope.get_online_players(false);
+         }, 5000);*/
 
         $scope.set_selected = function (player) {
             SelectedProperties.setPlayerSelected(player);
@@ -45,7 +66,7 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         };
 
         $scope.get_online_players = function (log) {
-            if(log != false){
+            if (log != false) {
                 log = true;
             }
             $scope.send_command("ListPlayers", "", "player", log);
@@ -53,12 +74,12 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
 
         $scope.send_command = function (cmd, attrs, type_loading, log) {
             //$rootScope.load(true);
-            if(type_loading){
-                if(type_loading == "player"){
+            if (type_loading) {
+                if (type_loading == "player") {
                     $scope.loading_player = true;
                 }
             }
-            if(log != false){
+            if (log != false) {
                 log = true;
             }
             $scope.loading_command = true;
@@ -72,18 +93,23 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
                 $scope.loading_command = false;
                 $scope.loading_player = false;
                 $scope.auto_reload = false;
-                try {
-                    if (data[1][0].playername) {
+                //try {
+                if (data[1][0].playername) {
+                    console.log("op player");
+                    CommandesFactory.getInfoSupPlayers().then(function (infos) {
+                        $scope.online_players_info = infos;
                         $scope.online_players = data[1];
-                    }
-                    if(log){
-                        functions[data[0].toLowerCase()](data[1]);
-                    }
+                    },function(){
+                        $scope.online_players = data[1];
+                    });
                 }
-                catch (e) {
-                    console.log(data);
-                    $rootScope.print_result(data, success_class);
+                if (log) {
+                    functions[data[0].toLowerCase()](data[1]);
                 }
+                //}
+                // catch (e) {
+                //    $rootScope.print_result(data, success_class);
+                //}
             }, function (msg) {
                 //$rootScope.load(false);
                 $scope.loading_command = false;

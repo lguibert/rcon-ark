@@ -22,6 +22,10 @@
 
 @controller_height: 32px;
 
+@text_color_list: #333;
+@background_list_light: #B6B6B6;
+@background_list_dark: #CFD8DC;
+
 html{
   background: no-repeat left top;
   background-size: 100%;
@@ -195,6 +199,10 @@ nav{
   }
 }
 
+.btn{
+  color: rgba(255,255,255,0.87);
+}
+
 .commands(@color){
   padding: 10px;
   margin:10px 0 10px 0;
@@ -283,7 +291,8 @@ nav{
     margin: 5px auto 5px auto;
     .border-radius();
     width: 250px;
-    background-color: rgba(110,150,190,0.8);
+    color:@text_color_list;
+    background-color: @background_list_dark;
     .players-data{
       margin: 5px 0 0 10px;
       .player-data{
@@ -357,12 +366,12 @@ nav{
   tr{
     width: 283px;
     &.darker{
-      background-color: rgb(162, 162, 162);
-      color:white;
+      background-color: @background_list_dark;
+      color:@text_color_list;
     }
     &.lighter{
-      background-color: rgb(72, 72, 72);
-      color:white;
+      background-color: @background_list_light;
+      color:@text_color_list;
     }
   }
   td{

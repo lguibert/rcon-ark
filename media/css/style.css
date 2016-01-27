@@ -147,6 +147,9 @@ nav a:hover {
 .loading div img {
   margin-top: 100px;
 }
+.btn {
+  color: rgba(255, 255, 255, 0.87);
+}
 #contain-commands {
   margin-bottom: 50px;
 }
@@ -238,7 +241,8 @@ nav a:hover {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   width: 250px;
-  background-color: rgba(110, 150, 190, 0.8);
+  color: #333;
+  background-color: #CFD8DC;
 }
 #players-container .players .players-data,
 #items-container .players .players-data {
@@ -312,12 +316,12 @@ nav a:hover {
   width: 283px;
 }
 #table-items tr.darker {
-  background-color: #a2a2a2;
-  color: white;
+  background-color: #CFD8DC;
+  color: #333;
 }
 #table-items tr.lighter {
-  background-color: #484848;
-  color: white;
+  background-color: #B6B6B6;
+  color: #333;
 }
 #table-items td {
   text-align: center;

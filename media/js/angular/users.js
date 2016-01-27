@@ -40,7 +40,7 @@ app.service('Session', function () {
     };
 });*/
 
-app.controller('LoginController', function ($scope, $rootScope, AuthenticationService, $location) {
+app.controller('LoginController', function ($scope, $rootScope, AuthenticationService, $location, $window) {
     $scope.credentials = {
         username: '',
         password: ''
@@ -66,6 +66,7 @@ app.controller('LoginController', function ($scope, $rootScope, AuthenticationSe
 
     $scope.logout = function (){
         AuthenticationService.ClearCredentials();
+        $window.sessionStorage.clear();
         $rootScope.logged = false;
         $location.path("/login");
     }
