@@ -98,23 +98,23 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
                 $scope.loading_command = false;
                 $scope.loading_player = false;
                 $scope.auto_reload = false;
-                //try {
-                if (data[1][0].playername) {
-                    console.log("op player");
-                    CommandesFactory.getInfoSupPlayers().then(function (infos) {
-                        $scope.online_players_info = infos;
-                        $scope.online_players = data[1];
-                    }, function () {
-                        $scope.online_players = data[1];
-                    });
+                try {
+                    if (data[1][0].playername) {
+                        console.log("op player");
+                        CommandesFactory.getInfoSupPlayers().then(function (infos) {
+                            $scope.online_players_info = infos;
+                            $scope.online_players = data[1];
+                        }, function () {
+                            $scope.online_players = data[1];
+                        });
+                    }
+                    if (log) {
+                        functions[data[0].toLowerCase()](data[1]);
+                    }
                 }
-                if (log) {
-                    functions[data[0].toLowerCase()](data[1]);
+                catch (e) {
+                    $rootScope.print_result(data, success_class);
                 }
-                //}
-                // catch (e) {
-                //    $rootScope.print_result(data, success_class);
-                //}
             }, function (msg) {
                 //$rootScope.load(false);
                 $scope.loading_command = false;

@@ -34,9 +34,15 @@ app.controller('MainController', ['$scope', '$rootScope', 'LoadingState',
         };
 
         $rootScope.print_result = function (data, type) {
-            var d = new Date();
-            angular.element("#result-results").append("<div class='result-results " + type + "'><i>[" + addZero(d.getHours()) + ":"
-                + addZero(d.getMinutes()) + ":" + addZero(d.getSeconds()) + "]</i> " + data + "</div>");
+            console.log(data);
+
+            var toDisplay = "";
+            if(data instanceof Array){
+                toDisplay = data[1]
+            }else{
+                toDisplay = data;
+            }
+            angular.element("#result-results").append("<div class='result-results " + type + "'>" + toDisplay + "</div>");
         };
 
         function addZero(i) {

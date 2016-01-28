@@ -110,7 +110,7 @@ app.filter('customSearch', function () {
 
 app.filter('toTimer', function () {
     return function (value) {
-        var duration = moment().startOf('day').add("s", value),
+        var duration = moment().startOf('day').add(value, "s"),
             format = "";
 
         if(duration.hour() > 0){ format += "HH[h ]"; }
