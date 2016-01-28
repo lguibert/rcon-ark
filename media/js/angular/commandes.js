@@ -59,6 +59,7 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
             CommandesFactory.getInfoSupPlayers().then(function (infos) {
                 $scope.online_players_info = infos
             });
+            //$("#result").scrollTop($("#result")[0].scrollHeight); //PERMET LE SCROLL DOWN AUTO
         }, 5000);
 
         $scope.set_selected = function (player) {
@@ -137,6 +138,10 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
         functions["giveitemnumtoplayer"] = function () {
             console.log(SelectedProperties.getItemSelected());
             console.log(SelectedProperties.getPlayerSelected());
+        };
+
+        functions['getgamelog'] = function(){
+
         };
 
         $scope.get_attrs_giveitem = function () {
