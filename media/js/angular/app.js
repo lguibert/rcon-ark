@@ -34,7 +34,15 @@ app.controller('MainController', ['$scope', '$rootScope', 'LoadingState',
         };
 
         $rootScope.print_result = function (data, type) {
-            console.log(data);
+            if(type == "log"){
+                if(data.length == 32){
+                    return; // regle le probleme du undefiend de derriere les fagots
+                }
+                type = "normal";
+                var selector = "#result-log"
+            }else{
+                var selector = "#result-results";
+            }
 
             var toDisplay = "";
             if(data instanceof Array){
@@ -42,7 +50,7 @@ app.controller('MainController', ['$scope', '$rootScope', 'LoadingState',
             }else{
                 toDisplay = data;
             }
-            angular.element("#result-results").append("<div class='result-results " + type + "'>" + toDisplay + "</div>");
+            angular.element(selector).append("<div class='result-results " + type + "'>" + toDisplay + "</div>");
         };
 
         function addZero(i) {

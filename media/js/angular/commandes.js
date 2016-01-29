@@ -101,7 +101,6 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
                 $scope.auto_reload = false;
                 try {
                     if (data[1][0].playername) {
-                        console.log("op player");
                         CommandesFactory.getInfoSupPlayers().then(function (infos) {
                             $scope.online_players_info = infos;
                             $scope.online_players = data[1];
@@ -140,8 +139,8 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
             console.log(SelectedProperties.getPlayerSelected());
         };
 
-        functions['getgamelog'] = function(){
-
+        functions['getgamelog'] = function(data){
+            $rootScope.print_result("<div class='log'>" + data + "</div>", "log");
         };
 
         $scope.get_attrs_giveitem = function () {

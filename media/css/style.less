@@ -9,8 +9,7 @@
 @text_color: #424242;
 @text_color_hover: #1A237E;
 
-@size_result: 250px;
-@max_size: 200px;
+@size_result: 200px;
 
 @back_transparent: rgba(255,255,255,0.7);
 @back_transparent_strong: rgba(255,255,255,0.85);
@@ -95,7 +94,7 @@ nav{
   color: @color_success;
 }
 
-#result{
+#result, #log{
   border: solid black 1px;
   width: 100%;
   overflow-y: auto;
@@ -103,13 +102,17 @@ nav{
   background-color: @back_transparent;
 }
 
+#log{
+  margin-top: 15px;
+}
+
 #result-controllers{
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-#result-results{
-  max-height: 45vh;
+#result-results, #result-log{
+  max-height: @size_result;
   .result-results{
     margin: 5px 0 5px 0;
   }
