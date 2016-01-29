@@ -148,7 +148,6 @@ app.controller('CommandesController', ['$scope', '$rootScope', 'superCache', 'Co
             return string;
         };
 
-
         $scope.clear_result = function () {
             angular.element("#result-results").html("");
         }

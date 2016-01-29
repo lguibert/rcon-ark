@@ -40,8 +40,13 @@ app.controller('MainController', ['$scope', '$rootScope', 'LoadingState',
                 }
                 type = "normal";
                 var selector = "#result-log"
+                var date = "";
             }else{
                 var selector = "#result-results";
+                var d = new Date();
+
+                date = "<i>[" + addZero(d.getHours()) + ":"
+                    + addZero(d.getMinutes()) + ":" + addZero(d.getSeconds()) + "]</i>";
             }
 
             var toDisplay = "";
@@ -50,7 +55,8 @@ app.controller('MainController', ['$scope', '$rootScope', 'LoadingState',
             }else{
                 toDisplay = data;
             }
-            angular.element(selector).append("<div class='result-results " + type + "'>" + toDisplay + "</div>");
+
+            angular.element(selector).append("<div class='result-results " + type + "'>"+ date + toDisplay + "</div>");
         };
 
         function addZero(i) {
